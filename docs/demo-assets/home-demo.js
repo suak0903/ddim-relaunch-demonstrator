@@ -162,15 +162,25 @@
 
   /* ---- Ausrichtungen, die CSS allein nicht messbar löst ---- */
 
-  /* Themen-Block oben bündig mit der ersten Sidebar-Kachel (breitenunabhängig) */
+  /* Themen-Block oben bündig mit der Sidebar; danach rückt die Sidebar so weit
+     nach unten, dass die Oberkante der blauen Kacheln exakt auf der Linie
+     unter "Unsere aktuellen Themen" liegt (Suats Review, Desktop) */
   function alignMagazine() {
     var mag = document.getElementById('avia-magazine-1');
     var side = document.getElementById('avia_partner_widget-3');
+    var inner = document.querySelector('.sidebar .inner_sidebar');
     if (!mag || !side) return;
     mag.style.marginTop = '0px';
+    if (inner) inner.style.marginTop = '0px';
     if (window.innerWidth < 990) return;
     var diff = mag.getBoundingClientRect().top - side.getBoundingClientRect().top;
     if (diff > 2) mag.style.marginTop = (-diff) + 'px';
+    var bar = mag.querySelector('.av-magazine-top-bar') ||
+              mag.querySelector('.av-magazine-top-heading');
+    if (bar && inner) {
+      var d2 = bar.getBoundingClientRect().bottom - side.getBoundingClientRect().top;
+      if (d2 > 2) inner.style.marginTop = Math.round(d2) + 'px';
+    }
   }
 
   /* Back-to-top: gleiche Größe wie der Burger, rechts bündig darunter;
