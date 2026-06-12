@@ -214,6 +214,24 @@
     }
   }
 
+  /* Enfold schreibt beim Desktop-Scrollen Inline-Höhen in die Header-Elemente
+     und räumt sie beim Breakpoint-Wechsel nicht auf (zu schmales Headerband
+     bis zum Refresh). Beim Wechsel Desktop<->Mobil: Inline-Styles löschen und
+     den Scroll-Zustand neu berechnen lassen. */
+  var lastMobileState = null;
+  function clearThemeHeaderStyles() {
+    var isMobile = document.documentElement.clientWidth <= 989;
+    if (lastMobileState === null) { lastMobileState = isMobile; return; }
+    if (isMobile === lastMobileState) return;
+    lastMobileState = isMobile;
+    ['#header', '#header_main', '#header_main .container', '.av-logo-container',
+     '#header .logo', '#header .logo a', '#header .logo img', '#header .main_menu']
+      .forEach(function (sel) {
+        document.querySelectorAll(sel).forEach(function (el) { el.removeAttribute('style'); });
+      });
+    window.dispatchEvent(new Event('scroll'));
+  }
+
   /* Mobiler Header ist fixiert: Inhalt um die echte Headerhöhe nachrücken */
   function padForFixedHeader() {
     var header = document.getElementById('header');
@@ -272,7 +290,9 @@
     padForFixedHeader();
     alignMagazine();
     alignBottomControls();
+    lastMobileState = document.documentElement.clientWidth <= 989;
     window.addEventListener('resize', function () {
+      clearThemeHeaderStyles();
       padForFixedHeader();
       alignMagazine();
       alignBottomControls();
