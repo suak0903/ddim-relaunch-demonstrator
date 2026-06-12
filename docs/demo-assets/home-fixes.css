@@ -319,11 +319,9 @@ body ul.wpsw-social-links li a:focus span.social-icon {
    Suat-Invariante: Farbe/Schatten, kein Scale. */
 .flex_column.linkbox {
   cursor: pointer;
-  transition: box-shadow .25s ease, background-color .25s ease;
+  transition: filter .25s ease;
 }
-.flex_column.linkbox:hover {
-  box-shadow: inset 0 0 0 2px #2a91d0, 0 6px 18px rgba(18, 51, 84, .18);
-}
+.flex_column.linkbox:hover { filter: brightness(0.94); }
 .flex_column.linkbox:hover .av-special-heading-tag { color: #2a91d0; }
 
 /* R2-8: Themenliste (Magazin) - Einträge beim Hover highlighten */
@@ -349,9 +347,7 @@ body ul.wpsw-social-links li a:focus span.social-icon {
 
 /* R2-7b: Kachel-Reihen einheitlich: gleiche Mindesthöhe, gleicher Reihenabstand */
 .flex_column_table.sc-av_one_third { margin-top: 36px !important; }
-@media (min-width: 768px) {
-  .flex_column.linkbox.av-equal-height-column { min-height: 280px; }
-}
+
 
 /* R2-3d (Nachschärfung): linke Einrückung des Teaser-Bilds vollständig entfernen */
 .av-magazine-entry-big .av-magazine-thumbnail,
@@ -371,10 +367,47 @@ body ul.wpsw-social-links li a:focus span.social-icon {
 /* R3-7: Hover-Tint endet rechts am Teaser-Bild (padding des Eintrags weg) */
 .av-magazine .av-magazine-hero .av-magazine-entry-big { padding-right: 0 !important; }
 
-/* R3-8: 6er-Kachelblock: feste Tabellenaufteilung, beide Reihen gleiche Spaltenbreiten */
+/* R3-8 (final): 6er-Kachelblock als CSS-Grid - im Original mischen sich
+   table-cell- und block-Zellen im selben Wrapper (ungleiche Breiten). */
 .flex_column_table.sc-av_one_third {
-  table-layout: fixed;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
   width: 100%;
+}
+/* Enfolds 8px-Abstandshalter wuerden eigene Grid-Zellen belegen */
+.flex_column_table.sc-av_one_third > .av-flex-placeholder { display: none !important; }
+.flex_column_table.sc-av_one_third > .flex_column {
+  display: block !important;
+  width: auto !important;
+  margin: 0 !important;
+  box-sizing: border-box;
+  min-height: 280px;
+  padding: 25px !important;
+}
+/* Untere Kachelreihe: lose Floats ausserhalb des Wrappers - bekommen exakt
+   die Grid-Spaltenformel der oberen Reihe (gleiche Breite, gleiche Luecken) */
+.entry-content-wrapper > .flex_column.av_one_third.linkbox {
+  float: left;
+  width: calc((100% - 56px) / 3) !important;
+  margin-left: 28px !important;
+  margin-top: 28px !important;
+  min-height: 280px;
+  padding: 25px !important;
+  box-sizing: border-box;
+  display: block !important;
+}
+.entry-content-wrapper > .flex_column.av_one_third.linkbox.first {
+  margin-left: 0 !important;
+}
+@media (max-width: 767px) {
+  .flex_column_table.sc-av_one_third { grid-template-columns: 1fr; }
+  .flex_column_table.sc-av_one_third > .flex_column { min-height: 200px; }
+  .entry-content-wrapper > .flex_column.av_one_third.linkbox {
+    width: 100% !important;
+    margin-left: 0 !important;
+    min-height: 200px;
+  }
 }
 
 /* R3-4: Sidebar-Bildkacheln (Interim Manager suchen / Mitglied werden) und
