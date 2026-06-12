@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8"><title>d</title>
+<style>body{margin:0;font:14px/1.5 monospace;background:#333}iframe{border:0;position:absolute;left:-9999px;width:414px;height:4200px}pre{color:#fff;padding:12px;font-size:15px;white-space:pre-wrap}</style>
+</head><body>
+<iframe id="f" src="./#noconsent"></iframe><pre id="out">lade...</pre>
+<script>
+document.getElementById('f').onload = function () {
+  var w = this.contentWindow, d = this.contentDocument;
+  setTimeout(function () {
+    var out = [];
+    function edge(name, el) {
+      if (!el) { out.push(name + ': fehlt'); return; }
+      var b = el.getBoundingClientRect();
+      out.push(name + ': L' + Math.round(b.left) + ' R' + Math.round(b.right));
+    }
+    edge('magazin', d.getElementById('avia-magazine-1'));
+    edge('newsband', d.querySelector('.avia-builder-el-9') || d.querySelector('.av_one_full.first'));
+    edge('sidebar', d.querySelector('.sidebar'));
+    edge('widget', d.getElementById('avia_partner_widget-3'));
+    var sb = d.querySelector('.sidebar');
+    var cs = w.getComputedStyle(sb);
+    out.push('sidebar borderTop=' + cs.borderTopStyle + ' ' + cs.borderTopWidth + ' ' + cs.borderTopColor + ' marL=' + cs.marginLeft + ' padL=' + cs.paddingLeft);
+    var h3 = d.querySelector('.flex_column.linkbox h3');
+    if (h3) out.push('kachel-h3 fontSize=' + w.getComputedStyle(h3).fontSize);
+    document.getElementById('out').textContent = out.join(String.fromCharCode(10));
+  }, 1800);
+};
+</script></body></html>

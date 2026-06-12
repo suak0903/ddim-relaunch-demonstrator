@@ -275,6 +275,33 @@
     }, true);
   }
 
+  /* Mobile Text-Labels für die Sidebar-Bildkacheln (Bildtext skaliert sonst mit) */
+  function labelPartnerTiles() {
+    var map = [['managerportal', 'Interim Manager DDIM suchen'], ['mitglied-werden', 'Mitglied werden']];
+    document.querySelectorAll('.sidebar .avia_partner_widget a').forEach(function (a) {
+      if (a.querySelector('.ddim-tile-label')) return;
+      var label = '';
+      map.forEach(function (m) { if (a.href.indexOf(m[0]) !== -1) label = m[1]; });
+      if (!label) return;
+      var s = document.createElement('span');
+      s.className = 'ddim-tile-label';
+      s.textContent = label;
+      a.appendChild(s);
+    });
+  }
+
+  /* reCAPTCHA-Badge nur im Footer-Bereich zeigen (weiches Ein-/Ausblenden) */
+  function badgeOnFooter() {
+    var footer = document.getElementById('footer') || document.getElementById('socket');
+    if (!footer || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        document.body.classList.toggle('ddim-footer-inview', e.isIntersecting);
+      });
+    }, { threshold: 0 });
+    io.observe(footer);
+  }
+
   /* Socket: Link "Cookie-Einstellungen" neben Impressum/Datenschutzerklärung */
   function addSocketConsentLink() {
     var privacyLi = document.querySelector('#socket .menu-item-privacy-policy') ||
@@ -296,6 +323,8 @@
     removeStaticCalendarNote();
     bindTips();
     addSocketConsentLink();
+    labelPartnerTiles();
+    badgeOnFooter();
     fastScrollTop();
     padForFixedHeader();
     alignMagazine();
