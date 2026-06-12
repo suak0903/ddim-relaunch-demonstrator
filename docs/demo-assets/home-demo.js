@@ -226,6 +226,27 @@
     }
   }
 
+  /* Back-to-top: schnellere Scroll-Animation (400ms ease-out) statt des
+     trägen Theme-Defaults */
+  function fastScrollTop() {
+    var btt = document.getElementById('scroll-top-link');
+    if (!btt) return;
+    btt.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      var start = window.pageYOffset;
+      var t0 = performance.now();
+      var dur = 400;
+      function step(t) {
+        var p = Math.min(1, (t - t0) / dur);
+        var ease = 1 - Math.pow(1 - p, 3); // ease-out cubic
+        window.scrollTo(0, Math.round(start * (1 - ease)));
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }, true);
+  }
+
   /* Socket: Link "Cookie-Einstellungen" neben Impressum/Datenschutzerklärung */
   function addSocketConsentLink() {
     var privacyLi = document.querySelector('#socket .menu-item-privacy-policy') ||
@@ -247,6 +268,7 @@
     removeStaticCalendarNote();
     bindTips();
     addSocketConsentLink();
+    fastScrollTop();
     padForFixedHeader();
     alignMagazine();
     alignBottomControls();
