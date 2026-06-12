@@ -181,6 +181,31 @@
       var d2 = bar.getBoundingClientRect().bottom - side.getBoundingClientRect().top;
       if (d2 > 2) inner.style.marginTop = Math.round(d2) + 'px';
     }
+    // News-Band: Unterkante bündig mit dem letzten Reporter-Button rechts
+    var el30 = document.querySelector('.avia-builder-el-30');
+    var band = el30 ? (el30.closest('.flex_column.av_one_full') || el30) : null;
+    var btns = document.querySelectorAll('.sidebar .avia-button');
+    var lastBtn = btns.length ? btns[btns.length - 1] : null;
+    if (band && lastBtn) {
+      band.style.marginTop = '0px';
+      // beide Richtungen: Band-Unterkante exakt auf Button-Unterkante
+      var d3 = lastBtn.getBoundingClientRect().bottom - band.getBoundingClientRect().bottom;
+      if (Math.abs(d3) > 2) band.style.marginTop = Math.round(d3) + 'px';
+    }
+    // Restabstand zum Footer kompensieren (negative Margins lassen sonst Luft)
+    var footer = document.getElementById('footer');
+    var main = document.getElementById('main');
+    if (footer && main) {
+      main.style.marginBottom = '0px';
+      var widgets = document.querySelectorAll('.sidebar .widget');
+      var lastW = widgets.length ? widgets[widgets.length - 1] : null;
+      var contentBottom = Math.max(
+        band ? band.getBoundingClientRect().bottom : 0,
+        lastW ? lastW.getBoundingClientRect().bottom : 0
+      );
+      var gap = footer.getBoundingClientRect().top - contentBottom;
+      if (gap > 100) main.style.marginBottom = (-(Math.round(gap) - 100)) + 'px';
+    }
   }
 
   /* Back-to-top: gleiche Größe wie der Burger, rechts bündig darunter;
