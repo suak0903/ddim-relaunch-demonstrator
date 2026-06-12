@@ -148,7 +148,7 @@ body ul.wpsw-social-links li a:hover span.social-icon,
 body ul.wpsw-social-links li a:focus span.social-icon {
   color: #123354 !important;
   background: transparent !important;
-  filter: brightness(0.75);
+  filter: brightness(1.6);
 }
 
 /* 9 (revidiert in Runde 2): Back-to-top bündig mit der Inhalts-/Burger-Flucht,
@@ -273,7 +273,8 @@ body ul.wpsw-social-links li a:focus span.social-icon {
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
 }
-#ddim-demo-bar a { color: #ffd24d; font-weight: 600; }
+#ddim-demo-bar a { color: #9bd0f0; font-weight: 600; }
+#ddim-demo-bar a:hover { color: #ffd24d; }
 #ddim-demo-bar button {
   color: #ffd24d;
   border-color: rgba(255, 210, 77, .6);
@@ -655,7 +656,8 @@ body.ddim-footer-inview .grecaptcha-badge {
 #top #footer .widget_text .avia-button {
   width: 250px !important;
   max-width: 100% !important;
-  min-height: 54px !important;
+  height: 54px !important;
+  min-height: 0 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -666,7 +668,7 @@ body.ddim-footer-inview .grecaptcha-badge {
   transition: filter .25s ease;
 }
 #top #footer .widget_black_studio_tinymce .avia-button:hover,
-#top #footer .widget_text .avia-button:hover { filter: brightness(0.8); }
+#top #footer .widget_text .avia-button:hover { filter: brightness(1.18); }
 
 /* Mobile: beide Buttons gleich gross nebeneinander, kompakt an den Block oben,
    gleicher Abstand nach unten */
@@ -688,7 +690,7 @@ body.ddim-footer-inview .grecaptcha-badge {
   #top #footer .widget_black_studio_tinymce .avia-button,
   #top #footer .widget_text .avia-button {
     width: 100% !important;
-    min-height: 60px !important;
+    height: 60px !important;
   }
   #top #footer .widget_black_studio_tinymce .avia-button-wrap,
   #top #footer .widget_text .avia-button-wrap { margin: 0; }

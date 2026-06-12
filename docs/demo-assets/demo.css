@@ -18,7 +18,9 @@
   color: #9bd0f0;
   text-decoration: underline;
   white-space: nowrap;
+  transition: color .2s ease;
 }
+#ddim-demo-bar a:hover { color: #ffd24d; }
 #ddim-demo-bar button {
   background: none;
   border: 1px solid rgba(255,255,255,.45);

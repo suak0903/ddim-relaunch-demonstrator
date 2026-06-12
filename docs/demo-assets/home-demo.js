@@ -343,6 +343,23 @@
     if (Math.abs(diff) > 2) firstWrap.style.marginTop = (-Math.round(diff)) + 'px';
   }
 
+  /* Footer-Grau exakt so weit vergrößern, dass am Seitenende kein weißer
+     Streifen unter dem (durchscheinenden) Sticky-Header bleibt */
+  function padFooterToViewport() {
+    var footer = document.getElementById('footer');
+    if (!footer) return;
+    footer.style.removeProperty('padding-top');
+    if (document.documentElement.clientWidth < 990) return;
+    var socket = document.getElementById('socket');
+    var total = footer.offsetHeight + (socket ? socket.offsetHeight : 0);
+    var headerH = 64; // geschrumpfter Sticky-Header
+    var need = Math.round(window.innerHeight - headerH - total);
+    if (need > 0) {
+      var base = parseFloat(getComputedStyle(footer).paddingTop) || 0;
+      footer.style.setProperty('padding-top', (base + need) + 'px', 'important');
+    }
+  }
+
   /* Socket: Link "Cookie-Einstellungen" neben Impressum/Datenschutzerklärung */
   function addSocketConsentLink() {
     var privacyLi = document.querySelector('#socket .menu-item-privacy-policy') ||
@@ -397,6 +414,7 @@
         alignMagazine();
         alignFooterButtons();
         alignBottomControls();
+        padFooterToViewport();
       }, 450);
     });
     // Beim Scrollen schrumpft der Header (header-scrolled): Burger-Position
