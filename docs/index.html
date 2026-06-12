@@ -12,7 +12,32 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="demo-assets/demo.css">
 <link rel="stylesheet" href="https://use.typekit.net/cip4qtl.css">
-<link rel="stylesheet" href="demo-assets/home-fixes.css?v=46">
+<link rel="stylesheet" href="demo-assets/home-fixes.css?v=47">
+<style id="ddim-button-fix">
+/* Cache-immune Kernregeln fuer die Footer-Buttons (Suats Review) */
+#top #footer .widget_black_studio_tinymce .avia-button,
+#top #footer .widget_text .avia-button {
+  width: 250px !important;
+  max-width: 100% !important;
+  height: 54px !important;
+  min-height: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  padding: 10px 14px !important;
+  white-space: normal;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  #top #footer .widget_black_studio_tinymce .avia-button,
+  #top #footer .widget_text .avia-button {
+    width: 100% !important;
+    height: 60px !important;
+  }
+}
+</style>
+
 
 <meta charset="UTF-8" />
 <!-- mobile setting -->
