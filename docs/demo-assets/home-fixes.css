@@ -428,7 +428,7 @@ body ul.wpsw-social-links li a:focus span.social-icon {
     left: 0;
     right: 0;
     z-index: 501;
-    background: #ffffff;
+    background: transparent; /* wie Desktop: die Flaeche liefert .header_bg */
   }
   .responsive #top #header .av-logo-container {
     height: auto !important;
@@ -459,6 +459,15 @@ body ul.wpsw-social-links li a:focus span.social-icon {
     min-height: 44px !important;
     padding-top: 2px;
     padding-bottom: 2px;
+  }
+  .responsive #top #header.header-scrolled .av-logo-container .inner-container,
+  .responsive #top #header.header-scrolled .logo,
+  .responsive #top #header.header-scrolled .main_menu {
+    height: 48px !important;
+  }
+  .responsive #top #header.header-scrolled .main_menu {
+    display: flex;
+    align-items: center;
   }
   .responsive #top #header.header-scrolled .logo a {
     height: 40px;
