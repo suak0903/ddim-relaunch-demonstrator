@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8"><title>d</title>
+<style>body{margin:0;font:14px/1.5 monospace;background:#333}iframe{border:0;position:absolute;left:-9999px;width:414px;height:7000px}pre{color:#fff;padding:12px;font-size:15px;white-space:pre-wrap}</style>
+</head><body>
+<iframe id="f" src="./#noconsent"></iframe><pre id="out">lade...</pre>
+<script>
+document.getElementById('f').onload = function () {
+  var w = this.contentWindow, d = this.contentDocument;
+  setTimeout(function () {
+    var out = [];
+    var el = d.querySelector('#ddim-footer-buttons .ddim-fbtn');
+    var ref = d.querySelector('#footer .textwidget p');
+    if (ref) out.push('REF Text: L' + Math.round(ref.getBoundingClientRect().left));
+    var node = el;
+    for (var k = 0; k < 5 && node; k++) {
+      var b = node.getBoundingClientRect();
+      var cs = w.getComputedStyle(node);
+      out.push((node.id || node.className.toString().slice(0,40)) + ': L' + Math.round(b.left) +
+        ' W' + Math.round(b.width) + ' padL=' + cs.paddingLeft + ' marL=' + cs.marginLeft + ' disp=' + cs.display);
+      node = node.parentElement;
+    }
+    document.getElementById('out').textContent = out.join(String.fromCharCode(10));
+  }, 2800);
+};
+</script></body></html>
