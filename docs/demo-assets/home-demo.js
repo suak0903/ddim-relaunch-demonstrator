@@ -392,12 +392,23 @@
       alignFooterButtons();
       alignBottomControls();
     }
+    // Enfolds Shrink-Logik cached die Headerhoehen einmalig beim Seitenstart
+    // und liefert nach einem Breakpoint-Wechsel dauerhaft falsche Werte
+    // (Theme-Bug, von aussen nicht heilbar). Deterministische Loesung: beim
+    // Ueberqueren der 990px-Grenze einmal sauber neu laden (entprellt,
+    // Scrollposition bleibt nativ erhalten).
+    var wasMobileBp = document.documentElement.clientWidth <= 989;
+    var bpReloadTimer = null;
     window.addEventListener('resize', function () {
-      clearThemeHeaderStyles();
+      var nowMobile = document.documentElement.clientWidth <= 989;
+      if (nowMobile !== wasMobileBp) {
+        wasMobileBp = nowMobile;
+        clearTimeout(bpReloadTimer);
+        bpReloadTimer = setTimeout(function () { location.reload(); }, 350);
+        return;
+      }
       realignAll();
-      // Enfold baut den Header nach Breakpoint-Wechseln zeitversetzt um:
-      // Tick-Serie statt Einzeltick
-      [120, 350, 800, 1500].forEach(function (t) { setTimeout(realignAll, t); });
+      [150, 500].forEach(function (t) { setTimeout(realignAll, t); });
     });
     // Robusteste Absicherung: jede Hoehenaenderung des Headers (egal wodurch)
     // fuehrt das Padding sofort nach
