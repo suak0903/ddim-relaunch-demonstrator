@@ -90,7 +90,7 @@
   <h2>Beim Spiegeln gefundene Unstimmigkeiten der Live-Seite</h2>
   <table>
     <tr><th>Befund</th><th>Detail</th></tr>
-    <tr><td>Tracking ohne Consent-Banner</td><td>Google Tag Manager / Analytics (GT-TQKWGQJ) lädt ohne Einwilligung. Im Demonstrator entfernt.</td></tr>
+    <tr><td>Tracking lädt vor der Einwilligung</td><td>Ein Consent-Banner (Borlabs Cookie) ist vorhanden, der Google-Tag (Site Kit, GT-TQKWGQJ) lädt jedoch bereits vor der Einwilligung: gtag("config") wird direkt ausgeführt, ohne Consent-Mode-Default. Im Demonstrator entfernt.</td></tr>
     <tr><td>Fonts von US-CDNs</td><td>Google Fonts (Open Sans, Noto Sans, Poppins) und Adobe Typekit werden extern geladen (IP-Übermittlung, LG-München-Thematik). Im Demonstrator: Google Fonts self-hosted; Typekit-Schriftschnitt (Zierschrift "verveine") ist lizenzrechtlich an die Domain gebunden und wurde entfernt, Fallback greift.</td></tr>
     <tr><td>Tote Links / fehlende Dateien</td><td>Menüpunkt "Partner Public Affairs" (?page_id=3810) liefert 404; vier verlinkte PDFs fehlen auf dem Server (u.&nbsp;a. Nachbericht DDIM-Kongress 2025, AIMP-Dokumente 2026).</td></tr>
     <tr><td>Test- und Altseiten öffentlich erreichbar</td><td>U.&nbsp;a. /test, /test-2, /0-formulartest, /hallo-welt, /homepage-2 sind öffentlich und teils indexierbar.</td></tr>
