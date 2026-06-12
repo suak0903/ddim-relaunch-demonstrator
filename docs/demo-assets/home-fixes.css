@@ -5,9 +5,12 @@
 /* 1: Scroll-Logo freigestellt. Original-Regel lädt DDIM-340-03.png (opak, weißer
    Kasten) per CSS-Background, noch dazu von der Live-Domain (//ddim.de). */
 .header-scrolled .logo a {
-  background-image: url(../wp-content/uploads/2016/07/DDIM-340-03-tr.png) !important;
+  /* sauber freigestellter Schriftzug (offizielles Logo) statt der unten
+     angeschnittenen 125px-Theme-Grafik */
+  background-image: url(../demo-assets/ddim-scroll-logo.png) !important;
   background-position: left center !important;
-  min-width: 132px;
+  background-size: auto 42px !important;
+  min-width: 180px;
 }
 
 /* 2: Volle Breite. boxed-Klassen sind im HTML entfernt; hier die Restpflege:
@@ -430,6 +433,8 @@ body ul.wpsw-social-links li a:focus span.social-icon {
     z-index: 501;
     background: transparent; /* wie Desktop: die Flaeche liefert .header_bg */
   }
+  /* gleiche Transparenz wie Desktop (dort liefert das Theme opacity 0.95) */
+  .responsive #top #header .header_bg { opacity: 0.95; }
   .responsive #top #header .av-logo-container {
     height: auto !important;
     min-height: 56px;
@@ -473,7 +478,7 @@ body ul.wpsw-social-links li a:focus span.social-icon {
     height: 48px;
     display: flex;
     align-items: center;
-    background-size: auto 30px !important;
+    background-size: auto 45px !important;
     background-position: left center !important;
   }
   .responsive #top #header.header-scrolled .logo img { max-height: 40px; }

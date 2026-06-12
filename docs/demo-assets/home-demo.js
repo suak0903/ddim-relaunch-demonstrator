@@ -276,6 +276,13 @@
       padForFixedHeader();
       alignMagazine();
       alignBottomControls();
+      // Zweiter Tick: nach dem Breakpoint-Wechsel braucht das Theme einen
+      // Moment fuer sein Re-Layout, danach nochmal exakt messen
+      setTimeout(function () {
+        padForFixedHeader();
+        alignMagazine();
+        alignBottomControls();
+      }, 300);
     });
     window.addEventListener('load', function () {
       padForFixedHeader();
