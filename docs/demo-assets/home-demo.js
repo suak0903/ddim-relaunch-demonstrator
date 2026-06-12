@@ -335,6 +335,17 @@
     var btns = document.querySelectorAll('#footer .widget_black_studio_tinymce .avia-button, #footer .widget_text .avia-button');
     var social = document.querySelector('.wpsw-social-links');
     if (btns.length < 2 || !social) return;
+    // Hoehe/Breite hart am Element erzwingen (immun gegen jede CSS-Quelle)
+    var mobile = document.documentElement.clientWidth <= 767;
+    btns.forEach(function (b) {
+      b.style.setProperty('height', mobile ? '60px' : '54px', 'important');
+      b.style.setProperty('min-height', '0', 'important');
+      b.style.setProperty('width', mobile ? '100%' : '250px', 'important');
+      b.style.setProperty('display', 'flex', 'important');
+      b.style.setProperty('align-items', 'center', 'important');
+      b.style.setProperty('justify-content', 'center', 'important');
+      b.style.setProperty('box-sizing', 'border-box', 'important');
+    });
     var firstWrap = btns[0].closest('.avia-button-wrap') || btns[0];
     firstWrap.style.marginTop = '0px';
     if (document.documentElement.clientWidth < 990) return;
