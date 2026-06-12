@@ -182,14 +182,16 @@
     if (!burger || !btt) return;
     var r = burger.getBoundingClientRect();
     if (r.width === 0) return; // Burger nicht sichtbar (Desktop-Textmenü)
-    // Exakte Burger-Position als CSS-Variablen: das Menü-X bleibt beim Öffnen
-    // an Ort und Stelle (Quadrat zentriert um die Icon-Mitte)
+    // Exakte Burger-Position als CSS-Variablen. WICHTIG: left-basiert verankern
+    // und clientWidth (ohne Scrollbar) rechnen - beim Öffnen des Menüs fällt die
+    // Body-Scrollbar weg, right-basierte Werte würden dann nach links glitchen.
     var root = document.documentElement;
+    var cw = root.clientWidth;
     var cx = r.left + r.width / 2;
     var cy = r.top + r.height / 2;
-    root.style.setProperty('--ddim-burger-right', Math.round(window.innerWidth - cx - 23) + 'px');
+    root.style.setProperty('--ddim-burger-left', Math.round(cx - 23) + 'px');
     root.style.setProperty('--ddim-burger-top', Math.max(4, Math.round(cy - 23)) + 'px');
-    var right = Math.round(window.innerWidth - r.right);
+    var right = Math.round(cw - r.right);
     var size = Math.max(44, Math.round(r.width));
     btt.style.setProperty('right', right + 'px', 'important');
     btt.style.setProperty('width', size + 'px', 'important');
@@ -199,6 +201,18 @@
     if (badge) {
       var bttBottom = parseInt(getComputedStyle(btt).bottom, 10) || 50;
       badge.style.setProperty('bottom', bttBottom + 'px', 'important');
+    }
+  }
+
+  /* Mobiler Header ist fixiert: Inhalt um die echte Headerhöhe nachrücken */
+  function padForFixedHeader() {
+    var header = document.getElementById('header');
+    var main = document.getElementById('main');
+    if (!header || !main) return;
+    if (document.documentElement.clientWidth <= 989) {
+      main.style.setProperty('padding-top', header.offsetHeight + 'px', 'important');
+    } else {
+      main.style.removeProperty('padding-top');
     }
   }
 
@@ -223,13 +237,16 @@
     removeStaticCalendarNote();
     bindTips();
     addSocketConsentLink();
+    padForFixedHeader();
     alignMagazine();
     alignBottomControls();
     window.addEventListener('resize', function () {
+      padForFixedHeader();
       alignMagazine();
       alignBottomControls();
     });
     window.addEventListener('load', function () {
+      padForFixedHeader();
       alignMagazine();
       alignBottomControls();
     });

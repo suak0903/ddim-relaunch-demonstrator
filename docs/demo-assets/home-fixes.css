@@ -6,6 +6,7 @@
    Kasten) per CSS-Background, noch dazu von der Live-Domain (//ddim.de). */
 .header-scrolled .logo a {
   background-image: url(../wp-content/uploads/2016/07/DDIM-340-03-tr.png) !important;
+  background-position: left center !important;
 }
 
 /* 2: Volle Breite. boxed-Klassen sind im HTML entfernt; hier die Restpflege:
@@ -22,8 +23,8 @@ html, body, #wrap_all { background-color: #ffffff; }
 html.av-burger-overlay-active body .av-burger-menu-main > a {
   position: fixed !important;
   top: var(--ddim-burger-top, 16px) !important;
-  right: var(--ddim-burger-right, max(6vw, calc((100vw - 1310px) / 2))) !important;
-  left: auto !important;
+  left: var(--ddim-burger-left, auto) !important;
+  right: var(--ddim-burger-right-fb, max(6vw, calc((100vw - 1310px) / 2))) !important;
   z-index: 1000001 !important;
   width: 46px !important;
   height: 46px !important;
@@ -426,10 +427,24 @@ body ul.wpsw-social-links li a:focus span.social-icon {
     left: 0;
     right: 0;
     z-index: 501;
+    background: #ffffff;
   }
-  .responsive #top #header .av-logo-container { height: 64px !important; }
-  .responsive #top #header .logo img { max-height: 56px; width: auto; }
-  .responsive #top #main { padding-top: 64px !important; }
+  .responsive #top #header .av-logo-container {
+    height: auto !important;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  .responsive #top #header .logo {
+    position: static !important;
+    display: flex;
+    align-items: center;
+  }
+  .responsive #top #header .logo a { display: flex; align-items: center; }
+  .responsive #top #header .logo img { max-height: 52px; width: auto; }
+  /* padding-top von #main setzt home-demo.js auf die gemessene Headerhoehe */
   #scroll-top-link {
     background: rgba(18, 51, 84, .55) !important;
   }
