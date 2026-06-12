@@ -47,8 +47,10 @@ def asset_rewrite(html: str, prefix: str) -> str:
     return html
 
 def page_link_rewrite(html: str, prefix: str) -> str:
+    # Achtung: Enfold mischt doppelte UND einfache Anfuehrungszeichen bei href
     def repl(m):
-        path = (m.group(1) or "").strip("/")
+        quote = m.group(1)
+        path = (m.group(2) or "").strip("/")
         # Query-/Anker-Reste abtrennen
         anchor = ""
         if "#" in path:
@@ -60,9 +62,9 @@ def page_link_rewrite(html: str, prefix: str) -> str:
             target = prefix + (local + "/" if local else "")
             if not target:
                 target = "./"
-            return 'href="' + target + anchor + '"'
+            return "href=" + quote + target + anchor + quote
         return m.group(0)  # nicht gespiegelt -> Live-Link belassen
-    return re.sub(r'href="https?://(?:www\.)?ddim\.de/?([^"]*)"', repl, html)
+    return re.sub(r'href=(["\'])https?://(?:www\.)?ddim\.de/?([^"\']*)\1', repl, html)
 
 def strip_blocks(html: str) -> str:
     # Script-Bloecke mit Tracking-Inhalt oder -Quelle entfernen

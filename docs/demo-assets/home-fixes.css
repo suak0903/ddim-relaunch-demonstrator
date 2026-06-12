@@ -1,0 +1,192 @@
+/* Startseiten-Fixes (Review-Stand 12.06.2026) - bewusst NUR in index.html eingebunden.
+   Nach Review von Suat werden übertragbare Regeln auf die Unterseiten ausgerollt.
+   Nummerierung folgt der Review-Liste. */
+
+/* 1: Scroll-Logo freigestellt. Original-Regel lädt DDIM-340-03.png (opak, weißer
+   Kasten) per CSS-Background, noch dazu von der Live-Domain (//ddim.de). */
+.header-scrolled .logo a {
+  background-image: url(../wp-content/uploads/2016/07/DDIM-340-03-tr.png) !important;
+}
+
+/* 2: Volle Breite. boxed-Klassen sind im HTML entfernt; hier die Restpflege:
+   grauer Seitenhintergrund weg, Inhalt bleibt zentriert. */
+body, #wrap_all { background-color: #ffffff; }
+
+/* 2/3: Header nutzt die Breite, Burger rückt nach rechts außen. */
+#header .container {
+  width: calc(100% - 80px);
+  max-width: calc(100% - 80px);
+}
+
+/* 3: Schließen-X des Overlay-Menüs bleibt fix sichtbar und bekommt einen weißen
+   Teller mit feinem Rand, damit Menütext beim Scrollen nicht hindurchscheint. */
+body.av-burger-overlay-active .av-burger-menu-main > a,
+body.av-burger-overlay-active #advanced_menu_toggle {
+  position: fixed !important;
+  top: 18px;
+  right: 40px;
+  z-index: 1000001 !important;
+  background: #ffffff;
+  box-shadow: 0 0 0 6px #ffffff, 0 0 0 7px #d9e2ea;
+}
+
+/* 4: Graue Box um das große Teaser-Bild bei "Unsere aktuellen Themen" entfernen,
+   Bild füllt die Box. */
+.av-magazine .av-magazine-hero .av-magazine-entry-big {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+.av-magazine-entry-big .av-magazine-thumbnail {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.av-magazine-entry-big .av-magazine-thumbnail img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 5: EventON-Fehlertoasts unterdrücken (AJAX läuft statisch ins Leere);
+   die Bedienelemente selbst bleiben im Original-Look, Klick erklärt der Demo-JS. */
+.evo_error, .evo_notification_box, .evo_top_notification { display: none !important; }
+
+/* 6: Buttons in der rechten Spalte (DDIM.reporter, Newsletter) auf volle
+   Spaltenbreite wie die Inhalte darüber. */
+.sidebar .widget .avia-button-wrap {
+  display: block;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+.sidebar .widget .avia-button-wrap .avia-button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* 7: Consent-gated Video in voller Inhaltsbreite; leere 1/5-Restspalte daneben aus. */
+#top .av-7ko5i-4e6a61d1c30c74f8710332919ee9fa6b { display: none; }
+#ddim-video-gate { margin: 0; }
+#ddim-video-gate iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+#ddim-video-gate.ddim-demo-embed { padding: 0; border: 0; background: transparent; }
+#ddim-video-gate .ddim-video-placeholder {
+  border: 1px solid #aec2ce;
+  background: #f7f7f7;
+  padding: 48px 32px;
+  text-align: center;
+}
+#ddim-video-gate .ddim-video-placeholder p { margin: 0 0 14px; }
+#ddim-video-gate .ddim-video-placeholder button {
+  background: #123354;
+  color: #ffffff;
+  border: 0;
+  padding: 11px 26px;
+  font-size: 14px;
+  cursor: pointer;
+}
+#ddim-video-gate .ddim-video-placeholder button:hover { background: #2a91d0; }
+
+/* 8: Footer: Login-/Newsletter-Buttons enger und einheitlich; Social-Icons
+   flach und modern statt weißer Kreis-Teller. */
+#footer .widget_black_studio_tinymce .textwidget > p { margin: 0 0 10px; }
+#footer .widget_black_studio_tinymce .avia-button-wrap { display: block; margin: 0 0 12px; }
+#footer .widget_black_studio_tinymce .avia-button {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  box-sizing: border-box;
+  text-align: center;
+}
+body ul.wpsw-social-links li a,
+body ul.wpsw-social-links li a span.social-icon,
+body ul.wpsw-social-links li span.social-icon:after,
+body ul.wpsw-social-links li span.social-icon:before {
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+body ul.wpsw-social-links li a span.social-icon {
+  color: #123354 !important;
+  font-size: 30px !important;
+  width: auto !important;
+  height: auto !important;
+  line-height: 1 !important;
+}
+body ul.wpsw-social-links li a:hover span.social-icon,
+body ul.wpsw-social-links li a:focus span.social-icon {
+  color: #2a91d0 !important;
+  background: transparent !important;
+}
+
+/* 9: Back-to-top in gleicher rechter Flucht wie der Burger (40 px). */
+#scroll-top-link { right: 40px !important; }
+
+/* 7: Mock-Consent-Banner (Look angelehnt an Borlabs, aufgeräumter, DDIM-Farbwelt) */
+#ddim-consent-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(18, 51, 84, .55);
+}
+#ddim-consent-overlay .ddim-consent-box {
+  background: #ffffff;
+  max-width: 560px;
+  width: calc(100% - 32px);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  padding: 30px 34px;
+  border-top: 4px solid #2a91d0;
+  font: 14px/1.6 "Open Sans", Helvetica, Arial, sans-serif;
+  color: #333333;
+}
+#ddim-consent-overlay h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #123354;
+}
+#ddim-consent-overlay p { margin: 0 0 14px; }
+.ddim-consent-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin: 0 0 18px;
+  padding: 14px 16px;
+  background: #f4f7fa;
+}
+.ddim-consent-options label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+  color: #123354;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.ddim-consent-options input { accent-color: #2a91d0; width: 16px; height: 16px; }
+.ddim-consent-actions { display: flex; flex-direction: column; gap: 9px; }
+.ddim-consent-actions button {
+  border: 0;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ddim-consent-actions .ddim-c-all { background: #123354; color: #ffffff; }
+.ddim-consent-actions .ddim-c-all:hover { background: #2a91d0; }
+.ddim-consent-actions .ddim-c-save { background: #e8eef3; color: #123354; }
+.ddim-consent-actions .ddim-c-essential { background: transparent; color: #123354; text-decoration: underline; font-weight: 400; }
+#ddim-consent-overlay .ddim-consent-links { margin: 16px 0 0; font-size: 12.5px; }
+#ddim-consent-overlay .ddim-consent-links a { color: #2a91d0; margin-right: 14px; }

@@ -42,6 +42,9 @@
     document.body.appendChild(ov);
   }
 
+  // Overlay auch für seitenspezifische Skripte nutzbar machen (z. B. home-demo.js)
+  window.ddimDemoOverlay = showOverlay;
+
   // Alle Formulare abfangen
   document.addEventListener('submit', function (e) {
     e.preventDefault();
