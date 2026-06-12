@@ -16,9 +16,17 @@
   h1 { font-family: Poppins, "Open Sans", sans-serif; font-size: 30px; margin: 0; }
   main { padding: 40px 24px 80px; }
   h2 { color: var(--blau); font-size: 21px; margin: 36px 0 8px; border-bottom: 1px solid var(--linie); padding-bottom: 6px; }
-  table { border-collapse: collapse; width: 100%; font-size: 15px; }
-  th, td { text-align: left; border-bottom: 1px solid var(--linie); padding: 8px 10px 8px 0; vertical-align: top; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; table-layout: fixed; }
+  th, td { text-align: left; border-bottom: 1px solid var(--linie); padding: 8px 10px 8px 0; vertical-align: top; overflow-wrap: break-word; }
   th { color: var(--blau); }
+  table.status th:nth-child(1), table.status td:nth-child(1) { width: 24%; }
+  table.status th:nth-child(2), table.status td:nth-child(2) { width: 17%; }
+  table.befunde th:nth-child(1), table.befunde td:nth-child(1) { width: 30%; }
+  @media (max-width: 600px) {
+    table { font-size: 13.5px; }
+    table.status th:nth-child(1), table.status td:nth-child(1) { width: 28%; }
+    table.status th:nth-child(2), table.status td:nth-child(2) { width: 21%; }
+  }
   a { color: var(--akzent); }
   .status-ok { color: #2e7d32; font-weight: 600; }
   .status-no { color: #b03a2e; font-weight: 600; }
@@ -43,7 +51,7 @@
   Kein öffentliches Angebot, von der Indexierung durch Suchmaschinen ausgeschlossen, ohne Tracking.</p>
 
   <h2>Was funktioniert, was nicht?</h2>
-  <table>
+  <table class="status">
     <tr><th>Bereich</th><th>Status</th><th>Erläuterung</th></tr>
     <tr>
       <td>Seitenstruktur, Inhalte, Design</td>
@@ -82,13 +90,13 @@
     </tr>
     <tr>
       <td>YouTube-Videos</td>
-      <td class="status-teil">Platzhalter</td>
-      <td>Im Original statisch eingebettet (datenschutzrechtlich problematisch, da ohne Einwilligung Daten an Google fließen). Hier: Platzhalter mit Direktlink; in einer finalen Version Consent-Gate.</td>
+      <td class="status-ok">Consent-Gate</td>
+      <td>Im Original statisch eingebettet (ohne Einwilligung fließen Daten an Google). Auf der Startseite des Demonstrators jetzt vorbildlich gelöst: Datenschutz-Banner mit Kategorienwahl, das Video lädt erst nach Einwilligung in "Externe Medien" (datensparsam über youtube-nocookie.com). Einstellungen jederzeit änderbar über "Cookie-Einstellungen" in der Fußzeile oder der Demo-Leiste. Unterseiten zeigen noch Platzhalter mit Direktlink (Rollout nach Review).</td>
     </tr>
   </table>
 
   <h2>Beim Spiegeln gefundene Unstimmigkeiten der Live-Seite</h2>
-  <table>
+  <table class="befunde">
     <tr><th>Befund</th><th>Detail</th></tr>
     <tr><td>Tracking lädt vor der Einwilligung</td><td>Ein Consent-Banner (Borlabs Cookie) ist vorhanden, der Google-Tag (Site Kit, GT-TQKWGQJ) lädt jedoch bereits vor der Einwilligung: gtag("config") wird direkt ausgeführt, ohne Consent-Mode-Default. Im Demonstrator entfernt.</td></tr>
     <tr><td>Fonts von US-CDNs</td><td>Google Fonts (Open Sans, Noto Sans, Poppins) und Adobe Typekit werden extern geladen (IP-Übermittlung, LG-München-Thematik). Im Demonstrator: Google Fonts self-hosted; Typekit-Schriftschnitt (Zierschrift "verveine") ist lizenzrechtlich an die Domain gebunden und wurde entfernt, Fallback greift.</td></tr>

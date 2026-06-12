@@ -10,21 +10,29 @@
 
 /* 2: Volle Breite. boxed-Klassen sind im HTML entfernt; hier die Restpflege:
    grauer Seitenhintergrund weg, Inhalt bleibt zentriert. */
-body, #wrap_all { background-color: #ffffff; }
+html, body, #wrap_all { background-color: #ffffff; }
 
 /* 2/3 (revidiert in Runde 2): Header bleibt in der Standard-Container-Breite,
    damit Logo und Burger bündig (flush) mit der Inhaltskante stehen. */
 
 /* 3: Schließen-X des Overlay-Menüs bleibt fix sichtbar und bekommt einen weißen
    Teller mit feinem Rand, damit Menütext beim Scrollen nicht hindurchscheint. */
-body.av-burger-overlay-active .av-burger-menu-main > a,
-body.av-burger-overlay-active #advanced_menu_toggle {
+.av-burger-overlay-active .av-burger-menu-main > a,
+.av-burger-overlay-active #advanced_menu_toggle,
+html.av-burger-overlay-active body .av-burger-menu-main > a {
   position: fixed !important;
-  top: 18px;
+  top: 16px;
   right: max(6vw, calc((100vw - 1310px) / 2));
   z-index: 1000001 !important;
-  background: #ffffff;
-  box-shadow: 0 0 0 6px #ffffff, 0 0 0 7px #d9e2ea;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff !important;
+  border: 1px solid #c9d4dd !important;
+  box-shadow: none;
+  opacity: 1 !important;
 }
 
 /* 4: Graue Box um das große Teaser-Bild bei "Unsere aktuellen Themen" entfernen,
@@ -133,15 +141,16 @@ body ul.wpsw-social-links li a:focus span.social-icon {
 }
 .grecaptcha-badge {
   position: fixed !important;
-  bottom: 50px !important;
   left: auto !important;
-  right: calc(max(6vw, (100vw - 1310px) / 2) + 60px) !important;
-  transform: scale(0.83);
+  right: -140px !important;
+  transform: scale(0.73);
   transform-origin: bottom right;
   z-index: 600 !important;
   box-shadow: none !important;
   border: 1px solid #d9e2ea;
+  transition: right .3s ease;
 }
+.grecaptcha-badge:hover { right: -10px !important; }
 
 /* 7: Mock-Consent-Banner (Look angelehnt an Borlabs, aufgeräumter, DDIM-Farbwelt) */
 #ddim-consent-overlay {
@@ -205,25 +214,23 @@ body ul.wpsw-social-links li a:focus span.social-icon {
 
 /* ============ Runde 2 (Review 12.06.2026, nachmittags) ============ */
 
-/* R2-3a: EventON-Filter-Icons. Die FontAwesome-Glyphen rendern im Mirror nicht
-   zuverlässig; Inline-SVG im Original-Look (Schieberegler + Sortierpfeile). */
-.calendar_header .evo-filter-btn:before,
-.calendar_header .evo-sort-btn:before {
-  content: '';
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  vertical-align: middle;
+/* R3-2: EventON-Filter-Buttons = Original-Grafiken (von Suat bereitgestellt) */
+.calendar_header .evo-filter-btn,
+.calendar_header .evo-sort-btn {
+  background-color: transparent !important;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  border: 0 !important;
+  width: 38px;
+  height: 31px;
+  padding: 0 !important;
 }
-.calendar_header .evo-filter-btn:before {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round'%3E%3Cline x1='1.5' y1='4' x2='14.5' y2='4'/%3E%3Cline x1='1.5' y1='12' x2='14.5' y2='12'/%3E%3C/g%3E%3Ccircle cx='5.5' cy='4' r='2.4' fill='%23ffffff'/%3E%3Ccircle cx='10.5' cy='12' r='2.4' fill='%23ffffff'/%3E%3C/svg%3E");
-}
-.calendar_header .evo-sort-btn:before {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3E%3Cpath d='M8 1.5l4 5H4z'/%3E%3Cpath d='M8 14.5l-4-5h8z'/%3E%3C/svg%3E");
-}
+.calendar_header .evo-filter-btn { background-image: url(evo-filter.png); }
+.calendar_header .evo-sort-btn { background-image: url(evo-sort.png); width: 33px; }
+.calendar_header .evo-filter-btn em,
+.calendar_header .evo-filter-btn:before,
+.calendar_header .evo-sort-btn:before { display: none !important; content: none !important; }
 
 /* R2-3b: Halbtransparentes Hinweis-Popup an den Filter-Buttons (statt statischer Box) */
 .evo_cal_above { position: relative; }
@@ -341,6 +348,63 @@ body ul.wpsw-social-links li a:focus span.social-icon {
 
 /* R2-3c (final): Spalten-Margin sitzt tiefer im Theme - Block direkt hochziehen,
    gemessen am Sidebar-Kachel-Oberrand (60px). */
+/* R2-3c: ersetzt durch JS-Messung (alignMagazine in home-demo.js) */
+
+/* ============ Runde 3 (Review 12.06.2026, abends) ============ */
+
+/* R3-7: Hover-Tint endet rechts am Teaser-Bild (padding des Eintrags weg) */
+.av-magazine .av-magazine-hero .av-magazine-entry-big { padding-right: 0 !important; }
+
+/* R3-8: 6er-Kachelblock: feste Tabellenaufteilung, beide Reihen gleiche Spaltenbreiten */
+.flex_column_table.sc-av_one_third {
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* R3-4: Sidebar-Bildkacheln (Interim Manager suchen / Mitglied werden) und
+   DDIM.reporter-Bild: Hover-Highlight wie die Linkboxen; mobil volle Breite */
+.sidebar .avia_partner_widget a img,
+.sidebar .widget_black_studio_tinymce h4 a img {
+  transition: filter .25s ease, outline-color .25s ease, box-shadow .25s ease;
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+}
+.sidebar .avia_partner_widget a:hover img,
+.sidebar .widget_black_studio_tinymce h4 a:hover img {
+  outline-color: #2a91d0;
+  filter: brightness(1.07);
+  box-shadow: 0 6px 18px rgba(18, 51, 84, .18);
+}
+@media (max-width: 767px) {
+  .sidebar .avia_partner_widget { display: flex; gap: 10px; }
+  .sidebar .avia_partner_widget a { width: 50%; margin: 0 !important; float: none !important; }
+  .sidebar .avia_partner_widget a img { width: 100%; height: auto; }
+  .sidebar .widget_black_studio_tinymce h4 a img { width: 100%; height: auto; }
+}
+
+/* R3-5: Footer-Spaltenbreiten an Inhaltsbreite angepasst (gleichmäßige Lücken) */
 @media (min-width: 990px) {
-  #avia-magazine-1 { margin-top: -60px; }
+  #footer .container > .flex_column.av_one_fifth.first { width: 17%; }
+  #footer .container > .flex_column.av_one_fifth:nth-of-type(2) { width: 14%; }
+  #footer .container > .flex_column.av_one_fifth:nth-of-type(3) { width: 17%; }
+  #footer .container > .flex_column.av_one_fifth:nth-of-type(4) { width: 14%; }
+  #footer .container > .flex_column.av_one_fifth:nth-of-type(5) { width: 26%; }
+}
+
+/* R3-6: Footer-Buttons in jeder Ansicht identisch; Back-to-top auch mobil */
+#footer .widget_black_studio_tinymce .avia-button {
+  width: 100% !important;
+  max-width: 250px !important;
+  min-height: 54px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+}
+@media (max-width: 989px) {
+  #scroll-top-link.avia_pop_class {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
 }

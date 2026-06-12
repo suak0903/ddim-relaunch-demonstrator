@@ -160,11 +160,72 @@
     });
   }
 
+  /* ---- Ausrichtungen, die CSS allein nicht messbar löst ---- */
+
+  /* Themen-Block oben bündig mit der ersten Sidebar-Kachel (breitenunabhängig) */
+  function alignMagazine() {
+    var mag = document.getElementById('avia-magazine-1');
+    var side = document.getElementById('avia_partner_widget-3');
+    if (!mag || !side) return;
+    mag.style.marginTop = '0px';
+    if (window.innerWidth < 990) return;
+    var diff = mag.getBoundingClientRect().top - side.getBoundingClientRect().top;
+    if (diff > 2) mag.style.marginTop = (-diff) + 'px';
+  }
+
+  /* Back-to-top: gleiche Größe wie der Burger, rechts bündig darunter;
+     reCAPTCHA-Badge auf gleicher Grundlinie */
+  function alignBottomControls() {
+    var burger = document.querySelector('.av-burger-menu-main .av-hamburger') ||
+                 document.querySelector('.av-burger-menu-main > a');
+    var btt = document.getElementById('scroll-top-link');
+    if (!burger || !btt) return;
+    var r = burger.getBoundingClientRect();
+    if (r.width === 0) return; // Burger nicht sichtbar (Desktop-Textmenü)
+    var right = Math.round(window.innerWidth - r.right);
+    var size = Math.max(44, Math.round(r.width));
+    btt.style.setProperty('right', right + 'px', 'important');
+    btt.style.setProperty('width', size + 'px', 'important');
+    btt.style.setProperty('height', size + 'px', 'important');
+    btt.style.setProperty('line-height', size + 'px', 'important');
+    var badge = document.querySelector('.grecaptcha-badge');
+    if (badge) {
+      var bttBottom = parseInt(getComputedStyle(btt).bottom, 10) || 50;
+      badge.style.setProperty('bottom', bttBottom + 'px', 'important');
+    }
+  }
+
+  /* Socket: Link "Cookie-Einstellungen" neben Impressum/Datenschutzerklärung */
+  function addSocketConsentLink() {
+    var privacyLi = document.querySelector('#socket .menu-item-privacy-policy') ||
+                    document.querySelector('.menu-item-privacy-policy');
+    if (!privacyLi || !privacyLi.parentNode) return;
+    var li = privacyLi.cloneNode(false);
+    li.id = 'menu-item-ddim-cookie';
+    var a = document.createElement('a');
+    a.href = '#';
+    a.innerHTML = '<span class="avia-menu-text">Cookie-Einstellungen</span>';
+    a.onclick = function (ev) { ev.preventDefault(); openBanner(); };
+    li.appendChild(a);
+    privacyLi.parentNode.appendChild(li);
+  }
+
   /* ---- Init ---- */
   function init() {
     renderVideo();
     removeStaticCalendarNote();
     bindTips();
+    addSocketConsentLink();
+    alignMagazine();
+    alignBottomControls();
+    window.addEventListener('resize', function () {
+      alignMagazine();
+      alignBottomControls();
+    });
+    window.addEventListener('load', function () {
+      alignMagazine();
+      alignBottomControls();
+    });
     var bar = document.getElementById('ddim-demo-bar');
     if (bar) {
       var a = document.createElement('a');
