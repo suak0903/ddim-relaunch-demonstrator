@@ -533,6 +533,15 @@ body ul.wpsw-social-links li a:focus span.social-icon {
 .responsive #top #wrap_all .sidebar .avia_partner_widget {
   display: flex !important;
   gap: 10px;
+}
+/* clearfix-Pseudoelemente wuerden als unsichtbare Flex-Items je 10px gap
+   links/rechts erzeugen (Kacheln nicht flush) */
+.responsive #top #wrap_all .sidebar .avia_partner_widget:before,
+.responsive #top #wrap_all .sidebar .avia_partner_widget:after {
+  display: none !important;
+  content: none !important;
+}
+.responsive #top #wrap_all .sidebar .avia_partner_widget {
   width: 100% !important;
   max-width: none !important;
   padding: 0 !important;
@@ -546,10 +555,10 @@ body ul.wpsw-social-links li a:focus span.social-icon {
   margin: 0 !important;
   float: none !important;
   background: #123354;
-  min-height: 165px;
+  aspect-ratio: 1 / 1;
   display: flex !important;
-  align-items: center;
-  padding: 18px 20px !important;
+  align-items: flex-start;
+  padding: 16px 18px !important;
   box-sizing: border-box;
   transition: filter .25s ease;
 }
@@ -558,12 +567,13 @@ body ul.wpsw-social-links li a:focus span.social-icon {
 .ddim-tile-label {
   display: block;
   color: #ffffff;
-  font-size: 22.4px;
-  line-height: 1.35;
+  font-size: 17px;
+  line-height: 1.45;
 }
 @media (max-width: 989px) {
-  .responsive #top #wrap_all .sidebar .avia_partner_widget a { min-height: 130px; }
+  .ddim-tile-label { font-size: 22.4px; line-height: 1.35; }
 }
+
 
 /* reCAPTCHA-Badge: unsichtbar, blendet erst im Footer-Bereich weich ein */
 .grecaptcha-badge {
