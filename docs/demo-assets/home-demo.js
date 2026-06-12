@@ -182,6 +182,13 @@
     if (!burger || !btt) return;
     var r = burger.getBoundingClientRect();
     if (r.width === 0) return; // Burger nicht sichtbar (Desktop-Textmenü)
+    // Exakte Burger-Position als CSS-Variablen: das Menü-X bleibt beim Öffnen
+    // an Ort und Stelle (Quadrat zentriert um die Icon-Mitte)
+    var root = document.documentElement;
+    var cx = r.left + r.width / 2;
+    var cy = r.top + r.height / 2;
+    root.style.setProperty('--ddim-burger-right', Math.round(window.innerWidth - cx - 23) + 'px');
+    root.style.setProperty('--ddim-burger-top', Math.max(4, Math.round(cy - 23)) + 'px');
     var right = Math.round(window.innerWidth - r.right);
     var size = Math.max(44, Math.round(r.width));
     btt.style.setProperty('right', right + 'px', 'important');

@@ -21,18 +21,29 @@ html, body, #wrap_all { background-color: #ffffff; }
 .av-burger-overlay-active #advanced_menu_toggle,
 html.av-burger-overlay-active body .av-burger-menu-main > a {
   position: fixed !important;
-  top: 16px;
-  right: max(6vw, calc((100vw - 1310px) / 2));
+  top: var(--ddim-burger-top, 16px) !important;
+  right: var(--ddim-burger-right, max(6vw, calc((100vw - 1310px) / 2))) !important;
+  left: auto !important;
   z-index: 1000001 !important;
-  width: 46px;
-  height: 46px;
-  display: flex;
+  width: 46px !important;
+  height: 46px !important;
+  min-height: 0 !important;
+  max-height: 46px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   background: #ffffff !important;
   border: 1px solid #c9d4dd !important;
   box-shadow: none;
   opacity: 1 !important;
+  line-height: 1 !important;
+}
+.av-burger-overlay-active .av-burger-menu-main > a .av-hamburger {
+  position: static !important;
+  margin: 0 !important;
+  transform: none;
 }
 
 /* 4: Graue Box um das große Teaser-Bild bei "Unsere aktuellen Themen" entfernen,
@@ -365,21 +376,17 @@ body ul.wpsw-social-links li a:focus span.social-icon {
    DDIM.reporter-Bild: Hover-Highlight wie die Linkboxen; mobil volle Breite */
 .sidebar .avia_partner_widget a img,
 .sidebar .widget_black_studio_tinymce h4 a img {
-  transition: filter .25s ease, outline-color .25s ease, box-shadow .25s ease;
-  outline: 2px solid transparent;
-  outline-offset: -2px;
+  transition: filter .25s ease;
 }
 .sidebar .avia_partner_widget a:hover img,
 .sidebar .widget_black_studio_tinymce h4 a:hover img {
-  outline-color: #2a91d0;
-  filter: brightness(1.07);
-  box-shadow: 0 6px 18px rgba(18, 51, 84, .18);
+  filter: brightness(1.18) saturate(1.05);
 }
-@media (max-width: 767px) {
-  .sidebar .avia_partner_widget { display: flex; gap: 10px; }
-  .sidebar .avia_partner_widget a { width: 50%; margin: 0 !important; float: none !important; }
-  .sidebar .avia_partner_widget a img { width: 100%; height: auto; }
-  .sidebar .widget_black_studio_tinymce h4 a img { width: 100%; height: auto; }
+@media (max-width: 989px) {
+  .sidebar .avia_partner_widget { display: flex; gap: 10px; width: 100%; }
+  .sidebar .avia_partner_widget a { width: calc(50% - 5px); margin: 0 !important; float: none !important; }
+  .sidebar .avia_partner_widget a img { width: 100% !important; height: auto; display: block; }
+  .sidebar .widget_black_studio_tinymce h4 a img { width: 100% !important; height: auto; }
 }
 
 /* R3-5: Footer-Spaltenbreiten an Inhaltsbreite angepasst (gleichmäßige Lücken) */
@@ -393,13 +400,15 @@ body ul.wpsw-social-links li a:focus span.social-icon {
 
 /* R3-6: Footer-Buttons in jeder Ansicht identisch; Back-to-top auch mobil */
 #footer .widget_black_studio_tinymce .avia-button {
-  width: 100% !important;
-  max-width: 250px !important;
+  width: 250px !important;
+  max-width: 100% !important;
   min-height: 54px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   box-sizing: border-box !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
 @media (max-width: 989px) {
   #scroll-top-link.avia_pop_class {
@@ -407,4 +416,22 @@ body ul.wpsw-social-links li a:focus span.social-icon {
     visibility: visible !important;
     opacity: 1 !important;
   }
+}
+
+/* R4-4: Mobiler Header bleibt sichtbar (fixed), etwas kompakter; Inhalt rueckt nach */
+@media (max-width: 989px) {
+  .responsive #top #header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 501;
+  }
+  .responsive #top #header .av-logo-container { height: 64px !important; }
+  .responsive #top #header .logo img { max-height: 56px; width: auto; }
+  .responsive #top #main { padding-top: 64px !important; }
+  #scroll-top-link {
+    background: rgba(18, 51, 84, .55) !important;
+  }
+  #scroll-top-link:hover { background: rgba(18, 51, 84, .9) !important; }
 }
