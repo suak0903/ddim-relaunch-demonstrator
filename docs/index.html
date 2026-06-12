@@ -15,7 +15,16 @@
 <link rel="stylesheet" href="demo-assets/home-fixes.css?v=47">
 <style id="ddim-button-fix">
 /* Footer-Buttons: komplett neu, ohne Theme-Abhaengigkeit */
-#ddim-footer-buttons { display: flex; flex-direction: column; gap: 14px; }
+#ddim-footer-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding: 0 !important;
+}
 .ddim-fbtn {
   display: flex;
   align-items: center;
@@ -1096,7 +1105,7 @@ BorlabsCookieInitCheck();});
 /* ]]> */
 </script>
 <div id="ddim-demo-bar" role="note">
-  <span><strong>Demonstrator:</strong> statische, KI-erstellte Arbeitskopie von ddim.de (Stand 12.06.2026) als Diskussionsgrundlage der DDIM.fachgruppe Digitale Transformation &amp; KI. Kein offizielles Angebot der DDIM e. V. <small style="opacity:.65">[Stand v49]</small></span>
+  <span><strong>Demonstrator:</strong> statische, KI-erstellte Arbeitskopie von ddim.de (Stand 12.06.2026) als Diskussionsgrundlage der DDIM.fachgruppe Digitale Transformation &amp; KI. Kein offizielles Angebot der DDIM e. V. <small style="opacity:.65">[Stand v50]</small></span>
   <a href="hinweise-demonstrator/">Hinweise zum Demonstrator</a>
   <button type="button" aria-label="Hinweis schliessen" onclick="this.parentNode.remove()">&times;</button>
 </div>
