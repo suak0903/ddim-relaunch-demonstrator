@@ -14,6 +14,32 @@
 <link rel="stylesheet" href="https://use.typekit.net/cip4qtl.css">
 <link rel="stylesheet" href="demo-assets/home-fixes.css?v=47">
 <style id="ddim-button-fix">
+/* Footer-Buttons: komplett neu, ohne Theme-Abhaengigkeit */
+#ddim-footer-buttons { display: flex; flex-direction: column; gap: 14px; }
+.ddim-fbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 250px;
+  height: 54px;
+  box-sizing: border-box;
+  background: #123354;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-size: 15px;
+  line-height: 1.3;
+  padding: 0 14px;
+  text-align: center;
+  transition: filter .25s ease;
+}
+.ddim-fbtn:hover { filter: brightness(1.18); }
+.ddim-fbtn svg { width: 16px; height: 16px; fill: currentColor; flex: 0 0 auto; }
+@media (max-width: 767px) {
+  #ddim-footer-buttons { flex-direction: row; gap: 10px; }
+  .ddim-fbtn { width: calc(50% - 5px); height: 60px; }
+}
+
 /* Cache-immune Kernregeln fuer die Footer-Buttons (Suats Review) */
 #top #footer .widget_black_studio_tinymce .avia-button,
 #top #footer .widget_text .avia-button {
@@ -813,9 +839,7 @@ stroke:#ffffff;
 
 						<div class='flex_column av_one_fifth  first el_before_av_one_fifth'><section id="black-studio-tinymce-2" class="widget clearfix widget_black_studio_tinymce"><h3 class="widgettitle ddim-footer-logo"><img src="demo-assets/ddim-scroll-logo.png" alt="DDIM"></h3><div class="textwidget"><p>DDIM - Dachgesellschaft Deutsches Interim Management e.V.</p>
 <p>&nbsp;</p>
-</div><span class="seperator extralight-border"></span></section><section id="black-studio-tinymce-15" class="widget clearfix widget_black_studio_tinymce"><div class="textwidget"><p><div  class='avia-button-wrap av-av_button-f4c1e72a06dde5ab45cfa17716e11694-wrap avia-button-left '><a href='https://mitgliederbereich.ddim.de/webportal/login'  class='avia-button av-av_button-f4c1e72a06dde5ab45cfa17716e11694 av-link-btn avia-icon_select-yes-left-icon avia-size-medium avia-position-left avia-color-theme-color'  target="_blank"  rel="noopener noreferrer"  aria-label="Mitgliederbereich (Login)"><span class='avia_button_icon avia_button_icon_left avia-iconfont avia-font-entypo-fontello' data-av_icon='' data-av_iconfont='entypo-fontello' ></span><span class='avia_iconbox_title' >Mitgliederbereich (Login)</span></a></div></p>
-</div><span class="seperator extralight-border"></span></section><section id="text-18" class="widget clearfix widget_text">			<div class="textwidget"><div  class='avia-button-wrap av-av_button-30db5ff4e915bcf1f474394b8ecc67ca-wrap avia-button-left '><a href='newsletter-anmeldung/'  class='avia-button av-av_button-30db5ff4e915bcf1f474394b8ecc67ca av-link-btn avia-icon_select-no avia-size-medium avia-position-left avia-color-theme-color'   aria-label="Newsletter abonnieren"><span class='avia_iconbox_title' >Newsletter abonnieren</span></a></div></div>
-		<span class="seperator extralight-border"></span></section></div><div class='flex_column av_one_fifth  el_after_av_one_fifth el_before_av_one_fifth '><section id="black-studio-tinymce-3" class="widget clearfix widget_black_studio_tinymce"><h3 class="widgettitle">Geschäftsstelle</h3><div class="textwidget"><p>Lindenstr. 14<br />
+</div><span class="seperator extralight-border"></span></section><section id="ddim-footer-buttons" class="widget"><a class="ddim-fbtn" href="https://mitgliederbereich.ddim.de/webportal/login" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1.5c-2.7 0-6 1.4-6 3.5V14h12v-1c0-2.1-3.3-3.5-6-3.5z"/></svg>Mitgliederbereich (Login)</a><a class="ddim-fbtn" href="newsletter-anmeldung/">Newsletter abonnieren</a></section></div><div class='flex_column av_one_fifth  el_after_av_one_fifth el_before_av_one_fifth '><section id="black-studio-tinymce-3" class="widget clearfix widget_black_studio_tinymce"><h3 class="widgettitle">Geschäftsstelle</h3><div class="textwidget"><p>Lindenstr. 14<br />
 50674 Köln</p>
 <p>Tel: +49 221 92428-555<br />
 Fax: +49 221 92428-559<br />
@@ -1072,12 +1096,12 @@ BorlabsCookieInitCheck();});
 /* ]]> */
 </script>
 <div id="ddim-demo-bar" role="note">
-  <span><strong>Demonstrator:</strong> statische, KI-erstellte Arbeitskopie von ddim.de (Stand 12.06.2026) als Diskussionsgrundlage der DDIM.fachgruppe Digitale Transformation &amp; KI. Kein offizielles Angebot der DDIM e. V. <small style="opacity:.65">[Stand v48]</small></span>
+  <span><strong>Demonstrator:</strong> statische, KI-erstellte Arbeitskopie von ddim.de (Stand 12.06.2026) als Diskussionsgrundlage der DDIM.fachgruppe Digitale Transformation &amp; KI. Kein offizielles Angebot der DDIM e. V. <small style="opacity:.65">[Stand v49]</small></span>
   <a href="hinweise-demonstrator/">Hinweise zum Demonstrator</a>
   <button type="button" aria-label="Hinweis schliessen" onclick="this.parentNode.remove()">&times;</button>
 </div>
 <script src="demo-assets/demo.js?v=2"></script>
-<script src="demo-assets/home-demo.js?v=22"></script>
+<script src="demo-assets/home-demo.js?v=23"></script>
 </body>
 </html>
 

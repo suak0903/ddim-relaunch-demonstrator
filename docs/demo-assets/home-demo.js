@@ -330,29 +330,15 @@
   /* Footer-Buttons hochschieben, bis die Unterkante des unteren Buttons
      bündig mit der Unterkante der Social-Icons ist (Desktop) */
   function alignFooterButtons() {
-    // Achtung: der Newsletter-Button hat keinen .avia-button-wrap - daher
-    // direkt ueber die Buttons gehen und den ersten umgebenden Block schieben
-    var btns = document.querySelectorAll('#footer .widget_black_studio_tinymce .avia-button, #footer .widget_text .avia-button');
+    var box = document.getElementById('ddim-footer-buttons');
     var social = document.querySelector('.wpsw-social-links');
-    if (btns.length < 2 || !social) return;
-    // Hoehe/Breite hart am Element erzwingen (immun gegen jede CSS-Quelle)
-    var mobile = document.documentElement.clientWidth <= 767;
-    btns.forEach(function (b) {
-      b.style.setProperty('height', mobile ? '60px' : '54px', 'important');
-      b.style.setProperty('min-height', '0', 'important');
-      b.style.setProperty('width', mobile ? '100%' : '250px', 'important');
-      b.style.setProperty('display', 'flex', 'important');
-      b.style.setProperty('align-items', 'center', 'important');
-      b.style.setProperty('justify-content', 'center', 'important');
-      b.style.setProperty('box-sizing', 'border-box', 'important');
-    });
-    var firstWrap = btns[0].closest('.avia-button-wrap') || btns[0];
-    firstWrap.style.marginTop = '0px';
+    if (!box || !social) return;
+    box.style.marginTop = '0px';
     if (document.documentElement.clientWidth < 990) return;
-    var lastBtn = btns[btns.length - 1];
-    var diff = lastBtn.getBoundingClientRect().bottom - social.getBoundingClientRect().bottom;
-    if (Math.abs(diff) > 2) firstWrap.style.marginTop = (-Math.round(diff)) + 'px';
+    var diff = box.getBoundingClientRect().bottom - social.getBoundingClientRect().bottom;
+    if (Math.abs(diff) > 2) box.style.marginTop = (-Math.round(diff)) + 'px';
   }
+
 
   /* Footer-Grau exakt so weit vergrößern, dass am Seitenende kein weißer
      Streifen unter dem (durchscheinenden) Sticky-Header bleibt */
