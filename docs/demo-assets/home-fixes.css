@@ -423,10 +423,44 @@ body ul.wpsw-social-links li a:focus span.social-icon {
   filter: brightness(1.18) saturate(1.05);
 }
 @media (max-width: 989px) {
-  .sidebar .avia_partner_widget { display: flex; gap: 10px; width: 100%; }
-  .sidebar .avia_partner_widget a { width: calc(50% - 5px); margin: 0 !important; float: none !important; }
-  .sidebar .avia_partner_widget a img { width: 100% !important; height: auto; display: block; }
+  /* Sidebar-Huelle begrenzte das Widget auf ~80% - mobil volle Content-Breite */
+  .responsive #top .sidebar { width: 100% !important; margin-left: 0 !important; border: 0; }
+  .responsive #top .sidebar .inner_sidebar {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .responsive #top #wrap_all .sidebar .avia_partner_widget {
+    display: flex !important;
+    gap: 10px;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .sidebar .avia_partner_widget a {
+    flex: 1 1 calc(50% - 5px);
+    width: calc(50% - 5px) !important;
+    max-width: none !important;
+    margin: 0 !important;
+    float: none !important;
+    display: block !important;
+  }
+  .sidebar .avia_partner_widget a img {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    display: block;
+  }
   .sidebar .widget_black_studio_tinymce h4 a img { width: 100% !important; height: auto; }
+}
+/* Hover darf NIE skalieren (gilt fuer jede Quelle einer transform-Regel) */
+.sidebar .avia_partner_widget a img,
+.sidebar .avia_partner_widget a:hover img,
+.sidebar .avia_partner_widget a:focus img {
+  transform: none !important;
 }
 
 /* R3-5: Footer-Spaltenbreiten an Inhaltsbreite angepasst (gleichmäßige Lücken) */
