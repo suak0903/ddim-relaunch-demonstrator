@@ -415,7 +415,7 @@ body ul.wpsw-social-links li a:focus span.social-icon {
 /* R3-4: Sidebar-Bildkacheln (Interim Manager suchen / Mitglied werden) und
    DDIM.reporter-Bild: Hover-Highlight wie die Linkboxen; mobil volle Breite */
 .sidebar .widget_black_studio_tinymce h4 a img { transition: filter .25s ease; }
-.sidebar .widget_black_studio_tinymce h4 a:hover img { filter: brightness(1.18) saturate(1.05); }
+.sidebar .widget_black_studio_tinymce h4 a:hover img { filter: brightness(0.94); }
 @media (max-width: 989px) {
   /* Trennlinie ueber der Sidebar: solid duenn grau wie alle anderen Linien */
   .responsive #top .sidebar {
@@ -429,7 +429,14 @@ body ul.wpsw-social-links li a:focus span.social-icon {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
-  .sidebar .widget_black_studio_tinymce h4 a img { width: 100% !important; height: auto; }
+  .responsive #top #wrap_all .sidebar .widget {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .sidebar .widget_black_studio_tinymce h4 a { display: block; width: 100%; }
+  .sidebar .widget_black_studio_tinymce h4 a img { width: 100% !important; max-width: none !important; height: auto; display: block; }
 }
 /* Hover darf NIE skalieren (gilt fuer jede Quelle einer transform-Regel) */
 .sidebar .avia_partner_widget a img,
