@@ -1,0 +1,74 @@
+/* Demonstrator-Elemente: Demo-Leiste, Embed-Platzhalter, Funktions-Overlay.
+   Bewusst eigenstaendig gehalten, damit das Original-Theme unangetastet bleibt. */
+
+#ddim-demo-bar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 9px 18px;
+  background: #123354;
+  color: #ffffff;
+  font: 13px/1.45 "Open Sans", Helvetica, Arial, sans-serif;
+}
+#ddim-demo-bar span { flex: 1; }
+#ddim-demo-bar a {
+  color: #9bd0f0;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+#ddim-demo-bar button {
+  background: none;
+  border: 1px solid rgba(255,255,255,.45);
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 1;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+#ddim-demo-bar button:hover { background: rgba(255,255,255,.12); }
+
+.ddim-demo-embed {
+  border: 1px solid #aec2ce;
+  background: #f7f7f7;
+  padding: 24px;
+  margin: 12px 0;
+}
+.ddim-demo-embed p { margin: 0 0 10px; }
+.ddim-demo-embed a { color: #2a91d0; font-weight: 600; }
+
+#ddim-demo-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(18,51,84,.55);
+}
+#ddim-demo-overlay .box {
+  background: #ffffff;
+  max-width: 520px;
+  margin: 16px;
+  padding: 28px 30px;
+  font: 15px/1.6 "Open Sans", Helvetica, Arial, sans-serif;
+  color: #333333;
+  border-top: 4px solid #2a91d0;
+}
+#ddim-demo-overlay h2 {
+  margin: 0 0 10px;
+  font-size: 19px;
+  color: #123354;
+}
+#ddim-demo-overlay .box a { color: #2a91d0; }
+#ddim-demo-overlay button {
+  margin-top: 14px;
+  background: #123354;
+  color: #ffffff;
+  border: 0;
+  padding: 9px 22px;
+  font-size: 14px;
+  cursor: pointer;
+}

@@ -1,0 +1,3 @@
+# Demonstrator / Arbeitskopie - keine Indexierung erwuenscht
+User-agent: *
+Disallow: /

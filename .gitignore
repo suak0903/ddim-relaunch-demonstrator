@@ -1,0 +1,15 @@
+# Whitelist-Prinzip: Es wird NUR committet, was unten explizit freigegeben ist.
+# Grund: Im Arbeitsordner liegen private Unterlagen (E-Mail-PDF, Playbook,
+# Vorlagen), die nicht in ein oeffentliches Repo gehoeren.
+/*
+
+# Freigegeben:
+!/.gitignore
+!/README.md
+!/docs/
+!/tools/
+
+# Arbeitsdaten bleiben draussen
+tools/asset_fails.log
+.firecrawl/
+_raw/

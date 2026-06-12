@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Hinweise zum Demonstrator | DDIM-Relaunch-Arbeitskopie</title>
+<link rel="stylesheet" href="../font/fonts.css">
+<style>
+  :root { --blau: #123354; --akzent: #2a91d0; --linie: #aec2ce; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.65 "Open Sans", Helvetica, Arial, sans-serif; color: #333; }
+  header { background: var(--blau); color: #fff; padding: 48px 24px; }
+  header .inner, main { max-width: 880px; margin: 0 auto; }
+  header p.eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 13px; margin: 0 0 8px; color: #9bd0f0; }
+  h1 { font-family: Poppins, "Open Sans", sans-serif; font-size: 30px; margin: 0; }
+  main { padding: 40px 24px 80px; }
+  h2 { color: var(--blau); font-size: 21px; margin: 36px 0 8px; border-bottom: 1px solid var(--linie); padding-bottom: 6px; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  th, td { text-align: left; border-bottom: 1px solid var(--linie); padding: 8px 10px 8px 0; vertical-align: top; }
+  th { color: var(--blau); }
+  a { color: var(--akzent); }
+  .status-ok { color: #2e7d32; font-weight: 600; }
+  .status-no { color: #b03a2e; font-weight: 600; }
+  .status-teil { color: #b07d2e; font-weight: 600; }
+  .zurueck { display: inline-block; margin-top: 28px; background: var(--blau); color: #fff; padding: 10px 22px; text-decoration: none; }
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <p class="eyebrow">DDIM.fachgruppe Digitale Transformation &amp; KI</p>
+    <h1>Hinweise zum Demonstrator.</h1>
+  </div>
+</header>
+<main>
+  <p>Diese Seiten sind eine <strong>statische, KI-erstellte Arbeitskopie von ddim.de</strong>
+  (Stand: 12.06.2026). Sie dient als Diskussions- und Arbeitsgrundlage für die anstehende
+  Relaunch-Entscheidung der DDIM: Sie zeigt, dass Struktur, Inhalte und Erscheinungsbild der
+  bestehenden Website ohne Agenturaufwand in eine moderne, schlanke und vollständig
+  kontrollierbare Form überführt werden können. Alle Inhalte, Texte, Bilder und Logos:
+  &copy; DDIM Dachgesellschaft Deutsches Interim Management e.&nbsp;V.
+  Kein öffentliches Angebot, von der Indexierung durch Suchmaschinen ausgeschlossen, ohne Tracking.</p>
+
+  <h2>Was funktioniert, was nicht?</h2>
+  <table>
+    <tr><th>Bereich</th><th>Status</th><th>Erläuterung</th></tr>
+    <tr>
+      <td>Seitenstruktur, Inhalte, Design</td>
+      <td class="status-ok">repliziert</td>
+      <td>73 Strukturseiten inkl. Hauptnavigation, Fachgruppen, Presse, Mitgliedschaft, Rechtliches. Erscheinungsbild unverändert (Original-Theme-CSS).</td>
+    </tr>
+    <tr>
+      <td>News- und Blogarchiv</td>
+      <td class="status-teil">teilweise</td>
+      <td>Rund 1.400 Einzelartikel aus über zehn Jahren sind bewusst nicht gespiegelt; vier aktuelle Beiträge sind exemplarisch enthalten. Links auf nicht gespiegelte Artikel führen zur Live-Seite. Eine vollständige Migration wäre per Skript jederzeit möglich.</td>
+    </tr>
+    <tr>
+      <td>Suche</td>
+      <td class="status-no">nicht abbildbar</td>
+      <td>Benötigt eine Server-Komponente (WordPress-Suche). In einer finalen statischen Lösung z.&nbsp;B. über einen clientseitigen Suchindex lösbar.</td>
+    </tr>
+    <tr>
+      <td>Veranstaltungskalender</td>
+      <td class="status-no">nicht abbildbar</td>
+      <td>Das Plugin EventON lädt Termine per AJAX aus der WordPress-Datenbank. Ohne Datenbankzugang bleibt der Kalender leer; ein Hinweis mit Link zum Original ist eingeblendet.</td>
+    </tr>
+    <tr>
+      <td>Mitgliederbereich, Managerportal, Mitgliederverzeichnis</td>
+      <td class="status-no">nicht abbildbar</td>
+      <td>Eigene Systeme auf externen Subdomains (managerportal.ddim.de, mitgliederbereich.ddim.de) mit Login und personenbezogenen Daten. Zugangsdaten liegen bewusst nicht vor; die Links führen zu den echten Systemen. Datenschutz: Mitgliederdaten gehören nicht in einen Demonstrator.</td>
+    </tr>
+    <tr>
+      <td>Online-Mitgliedsantrag</td>
+      <td class="status-no">nicht abbildbar</td>
+      <td>Externer Dienst (der-moderne-verein.de), im Original per iframe eingebettet. Hier durch einen Platzhalter mit Direktlink ersetzt.</td>
+    </tr>
+    <tr>
+      <td>Newsletter-Anmeldung, Kontakt-/Anmeldeformulare</td>
+      <td class="status-no">nicht abbildbar</td>
+      <td>Formulare benötigen einen Server-Endpoint. Absenden zeigt im Demonstrator einen Hinweis. Referenz-Implementierung (PHP-Endpoint mit 8-stufigem Hardening) liegt vor und wäre auf jedem Shared Hosting lauffähig.</td>
+    </tr>
+    <tr>
+      <td>YouTube-Videos</td>
+      <td class="status-teil">Platzhalter</td>
+      <td>Im Original statisch eingebettet (datenschutzrechtlich problematisch, da ohne Einwilligung Daten an Google fließen). Hier: Platzhalter mit Direktlink; in einer finalen Version Consent-Gate.</td>
+    </tr>
+  </table>
+
+  <h2>Beim Spiegeln gefundene Unstimmigkeiten der Live-Seite</h2>
+  <table>
+    <tr><th>Befund</th><th>Detail</th></tr>
+    <tr><td>Tracking ohne Consent-Banner</td><td>Google Tag Manager / Analytics (GT-TQKWGQJ) lädt ohne Einwilligung. Im Demonstrator entfernt.</td></tr>
+    <tr><td>Fonts von US-CDNs</td><td>Google Fonts (Open Sans, Noto Sans, Poppins) und Adobe Typekit werden extern geladen (IP-Übermittlung, LG-München-Thematik). Im Demonstrator: Google Fonts self-hosted; Typekit-Schriftschnitt (Zierschrift "verveine") ist lizenzrechtlich an die Domain gebunden und wurde entfernt, Fallback greift.</td></tr>
+    <tr><td>Tote Links / fehlende Dateien</td><td>Menüpunkt "Partner Public Affairs" (?page_id=3810) liefert 404; vier verlinkte PDFs fehlen auf dem Server (u.&nbsp;a. Nachbericht DDIM-Kongress 2025, AIMP-Dokumente 2026).</td></tr>
+    <tr><td>Test- und Altseiten öffentlich erreichbar</td><td>U.&nbsp;a. /test, /test-2, /0-formulartest, /hallo-welt, /homepage-2 sind öffentlich und teils indexierbar.</td></tr>
+    <tr><td>Uneinheitliche Bildformate</td><td>Sehr große JPGs ohne moderne Formate (WebP/AVIF nur vereinzelt); responsive Varianten (srcset) wurden hier zugunsten eines schlanken Spiegels entfernt.</td></tr>
+  </table>
+
+  <h2>Technischer Rahmen</h2>
+  <p>Statisches HTML/CSS/JS ohne Datenbank, ohne CMS, ohne Build-Prozess. Gehostet als
+  GitHub-Pages-Preview; lauffähig auf jedem beliebigen Webspace. Der komplette
+  Erstellungsprozess (Crawling, Bereinigung, Asset-Spiegelung) ist als Skriptsatz im
+  Repository dokumentiert und reproduzierbar.</p>
+
+  <a class="zurueck" href="../">Zur Startseite des Demonstrators</a>
+</main>
+</body>
+</html>
