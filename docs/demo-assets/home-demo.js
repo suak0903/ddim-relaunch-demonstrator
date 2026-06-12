@@ -110,27 +110,61 @@
     }
   }
 
-  /* ---- EventON-Bedienelemente: Original-Look, Klick erklärt die Grenze ---- */
-  document.addEventListener('click', function (e) {
-    var t = e.target.closest && e.target.closest(
-      '.evo_filter_bar, .evo-sort, .evo_j_grid_filter, .evcal_btn_prev, .evcal_btn_next, .evo_filter_container');
-    if (!t) return;
-    e.preventDefault();
-    e.stopPropagation();
-    if (window.ddimDemoOverlay) {
-      window.ddimDemoOverlay(
-        'Terminfilter im Demonstrator nicht verfügbar',
-        'Filter, Sortierung und Monatswechsel des Veranstaltungskalenders laden die Termine ' +
-        'im Original per AJAX aus der WordPress-Datenbank (Plugin EventON). Der Demonstrator ' +
-        'hat kein Backend, daher bleiben diese Bedienelemente hier ohne Funktion. Aktuelle ' +
-        'Termine stehen auf ddim.de/veranstaltungskalender.'
-      );
+  /* ---- EventON-Bedienelemente: Original-Look; Hover/Klick zeigt halb-
+     transparentes Popup direkt an den Buttons (statt statischer Hinweis-Box) ---- */
+  var TIP_HTML = '<strong>Hinweis:</strong> Filter und Sortierung laden die Termine ' +
+    'im Original per AJAX aus der WordPress-Datenbank (Plugin EventON). Ohne Server-' +
+    'Anbindung bleiben sie hier ohne Funktion. Aktuelle Termine: ' +
+    '<a href="https://ddim.de/veranstaltungskalender/" target="_blank" rel="noopener">ddim.de/veranstaltungskalender</a>';
+  var tipTimer = null;
+
+  function showTip(host) {
+    var bar = host.closest('.evo_cal_above') || host.parentNode;
+    if (!bar) return;
+    var tip = bar.querySelector('.ddim-evo-tip');
+    if (!tip) {
+      tip = document.createElement('div');
+      tip.className = 'ddim-evo-tip';
+      tip.innerHTML = TIP_HTML;
+      bar.appendChild(tip);
     }
-  }, true);
+    clearTimeout(tipTimer);
+    tip.style.display = 'block';
+  }
+  function hideTipSoon() {
+    clearTimeout(tipTimer);
+    tipTimer = setTimeout(function () {
+      document.querySelectorAll('.ddim-evo-tip').forEach(function (t) { t.style.display = 'none'; });
+    }, 350);
+  }
+  function bindTips() {
+    document.querySelectorAll('.evo-filter-btn, .evo-sort-btn').forEach(function (btn) {
+      btn.addEventListener('mouseenter', function () { showTip(btn); });
+      btn.addEventListener('mouseleave', hideTipSoon);
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        showTip(btn);
+      }, true);
+    });
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.evo-filter-btn, .evo-sort-btn, .ddim-evo-tip')) hideTipSoon();
+    });
+  }
+
+  /* Statische Kalender-Hinweis-Box (von demo.js eingefügt) auf der Startseite
+     entfernen - der Hinweis lebt jetzt im Popup an den Buttons. */
+  function removeStaticCalendarNote() {
+    document.querySelectorAll('.ddim-demo-embed').forEach(function (el) {
+      if (el.id !== 'ddim-video-gate' && /Veranstaltungskalender/.test(el.textContent)) el.remove();
+    });
+  }
 
   /* ---- Init ---- */
   function init() {
     renderVideo();
+    removeStaticCalendarNote();
+    bindTips();
     var bar = document.getElementById('ddim-demo-bar');
     if (bar) {
       var a = document.createElement('a');

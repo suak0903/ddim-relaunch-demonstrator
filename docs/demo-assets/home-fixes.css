@@ -12,11 +12,8 @@
    grauer Seitenhintergrund weg, Inhalt bleibt zentriert. */
 body, #wrap_all { background-color: #ffffff; }
 
-/* 2/3: Header nutzt die Breite, Burger rückt nach rechts außen. */
-#header .container {
-  width: calc(100% - 80px);
-  max-width: calc(100% - 80px);
-}
+/* 2/3 (revidiert in Runde 2): Header bleibt in der Standard-Container-Breite,
+   damit Logo und Burger bündig (flush) mit der Inhaltskante stehen. */
 
 /* 3: Schließen-X des Overlay-Menüs bleibt fix sichtbar und bekommt einen weißen
    Teller mit feinem Rand, damit Menütext beim Scrollen nicht hindurchscheint. */
@@ -24,7 +21,7 @@ body.av-burger-overlay-active .av-burger-menu-main > a,
 body.av-burger-overlay-active #advanced_menu_toggle {
   position: fixed !important;
   top: 18px;
-  right: 40px;
+  right: max(6vw, calc((100vw - 1310px) / 2));
   z-index: 1000001 !important;
   background: #ffffff;
   box-shadow: 0 0 0 6px #ffffff, 0 0 0 7px #d9e2ea;
@@ -128,8 +125,23 @@ body ul.wpsw-social-links li a:focus span.social-icon {
   background: transparent !important;
 }
 
-/* 9: Back-to-top in gleicher rechter Flucht wie der Burger (40 px). */
-#scroll-top-link { right: 40px !important; }
+/* 9 (revidiert in Runde 2): Back-to-top bündig mit der Inhalts-/Burger-Flucht,
+   reCAPTCHA-Badge daneben in gleicher Höhe statt teilüberlagert. */
+#scroll-top-link {
+  right: max(6vw, calc((100vw - 1310px) / 2)) !important;
+  bottom: 50px;
+}
+.grecaptcha-badge {
+  position: fixed !important;
+  bottom: 50px !important;
+  left: auto !important;
+  right: calc(max(6vw, (100vw - 1310px) / 2) + 60px) !important;
+  transform: scale(0.83);
+  transform-origin: bottom right;
+  z-index: 600 !important;
+  box-shadow: none !important;
+  border: 1px solid #d9e2ea;
+}
 
 /* 7: Mock-Consent-Banner (Look angelehnt an Borlabs, aufgeräumter, DDIM-Farbwelt) */
 #ddim-consent-overlay {
@@ -190,3 +202,145 @@ body ul.wpsw-social-links li a:focus span.social-icon {
 .ddim-consent-actions .ddim-c-essential { background: transparent; color: #123354; text-decoration: underline; font-weight: 400; }
 #ddim-consent-overlay .ddim-consent-links { margin: 16px 0 0; font-size: 12.5px; }
 #ddim-consent-overlay .ddim-consent-links a { color: #2a91d0; margin-right: 14px; }
+
+/* ============ Runde 2 (Review 12.06.2026, nachmittags) ============ */
+
+/* R2-3a: EventON-Filter-Icons. Die FontAwesome-Glyphen rendern im Mirror nicht
+   zuverlässig; Inline-SVG im Original-Look (Schieberegler + Sortierpfeile). */
+.calendar_header .evo-filter-btn:before,
+.calendar_header .evo-sort-btn:before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.calendar_header .evo-filter-btn:before {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round'%3E%3Cline x1='1.5' y1='4' x2='14.5' y2='4'/%3E%3Cline x1='1.5' y1='12' x2='14.5' y2='12'/%3E%3C/g%3E%3Ccircle cx='5.5' cy='4' r='2.4' fill='%23ffffff'/%3E%3Ccircle cx='10.5' cy='12' r='2.4' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+.calendar_header .evo-sort-btn:before {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3E%3Cpath d='M8 1.5l4 5H4z'/%3E%3Cpath d='M8 14.5l-4-5h8z'/%3E%3C/svg%3E");
+}
+
+/* R2-3b: Halbtransparentes Hinweis-Popup an den Filter-Buttons (statt statischer Box) */
+.evo_cal_above { position: relative; }
+.ddim-evo-tip {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 300px;
+  z-index: 500;
+  background: rgba(18, 51, 84, .92);
+  color: #ffffff;
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.ddim-evo-tip a { color: #9bd0f0; }
+
+/* R2-4: Demo-Leiste halbtransparent mit gelber Schrift, auffälliger */
+#ddim-demo-bar {
+  background: rgba(18, 51, 84, .85);
+  color: #ffd24d;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+#ddim-demo-bar a { color: #ffd24d; font-weight: 600; }
+#ddim-demo-bar button {
+  color: #ffd24d;
+  border-color: rgba(255, 210, 77, .6);
+}
+@media (max-width: 767px) {
+  #ddim-demo-bar {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px 18px;
+    padding: 12px 56px 12px 16px;
+  }
+  #ddim-demo-bar span { flex: 1 1 100%; }
+  #ddim-demo-bar a { display: block; white-space: normal; }
+  #ddim-demo-bar button {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 20px;
+    padding: 6px 12px;
+    border-width: 2px;
+  }
+}
+
+/* R2-5: Footer-Spalten oben bündig; Breiten neu verteilt, damit die
+   Fachgruppenliste einzeilig bleibt. */
+#footer .widget { margin-top: 0; padding-top: 0; }
+#footer .widgettitle { margin: 0 0 14px; }
+#footer .textwidget > p:first-child { margin-top: 0; }
+@media (min-width: 990px) {
+  #footer .container > .flex_column.av_one_fifth { margin-left: 3%; width: 17%; }
+  #footer .container > .flex_column.av_one_fifth.first { margin-left: 0; width: 15%; }
+  #footer .container > .flex_column.av_one_fifth:nth-of-type(4) { width: 12%; }
+  #footer .container > .flex_column.av_one_fifth:nth-of-type(5) { width: 27%; }
+}
+
+/* R2-6: Footer-Buttons gleich breit UND gleich hoch */
+#footer .widget_black_studio_tinymce .avia-button {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* R2-7: Kacheln (Linkboxen) einheitlich + Hover-Highlight für ALLES Klickbare.
+   Suat-Invariante: Farbe/Schatten, kein Scale. */
+.flex_column.linkbox {
+  cursor: pointer;
+  transition: box-shadow .25s ease, background-color .25s ease;
+}
+.flex_column.linkbox:hover {
+  box-shadow: inset 0 0 0 2px #2a91d0, 0 6px 18px rgba(18, 51, 84, .18);
+}
+.flex_column.linkbox:hover .av-special-heading-tag { color: #2a91d0; }
+
+/* R2-8: Themenliste (Magazin) - Einträge beim Hover highlighten */
+.av-magazine .av-magazine-entry { transition: background-color .2s ease; }
+.av-magazine .av-magazine-entry:hover { background-color: #f2f7fb; }
+.av-magazine .av-magazine-entry:hover .av-magazine-title,
+.av-magazine .av-magazine-entry:hover h3 a { color: #2a91d0; }
+
+/* R2-3c: Themen-Block oben bündig mit den Sidebar-Kacheln (column-top-margin
+   der Hauptspalte neutralisieren) */
+.content .flex_column.el_after_av_one_full.el_before_av_four_fifth.column-top-margin {
+  margin-top: 0 !important;
+}
+
+/* R2-3d: Großer Teaser - Bild und Text bündig zur Spaltenkante, Bild volle Breite */
+.av-magazine .av-magazine-entry-big { margin: 0; }
+.av-magazine-entry-big .av-magazine-thumbnail {
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+.av-magazine-entry-big .av-magazine-content-wrap { padding-left: 0 !important; }
+
+/* R2-7b: Kachel-Reihen einheitlich: gleiche Mindesthöhe, gleicher Reihenabstand */
+.flex_column_table.sc-av_one_third { margin-top: 36px !important; }
+@media (min-width: 768px) {
+  .flex_column.linkbox.av-equal-height-column { min-height: 280px; }
+}
+
+/* R2-3d (Nachschärfung): linke Einrückung des Teaser-Bilds vollständig entfernen */
+.av-magazine-entry-big .av-magazine-thumbnail,
+.av-magazine-entry-big .av-magazine-thumbnail-link,
+.av-magazine-entry-big .av-magazine-thumbnail img {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  border-left: 0 !important;
+}
+
+/* R2-3c (final): Spalten-Margin sitzt tiefer im Theme - Block direkt hochziehen,
+   gemessen am Sidebar-Kachel-Oberrand (60px). */
+@media (min-width: 990px) {
+  #avia-magazine-1 { margin-top: -60px; }
+}
