@@ -672,7 +672,7 @@ body.ddim-footer-inview .grecaptcha-badge {
 
 /* Mobile: beide Buttons gleich gross nebeneinander, kompakt an den Block oben,
    gleicher Abstand nach unten */
-@media (max-width: 989px) {
+@media (max-width: 767px) {
   #footer .container > .flex_column.av_one_fifth.first {
     display: flex;
     flex-wrap: wrap;
@@ -703,8 +703,8 @@ body.ddim-footer-inview .grecaptcha-badge {
     display: flex !important;
     justify-content: flex-start;
     align-items: center;
-    gap: 26px;
-    margin: 0 !important;
+    gap: 14px;
+    margin: 0 0 0 -10px !important; /* Glyphen-Innenluft: Tinte beginnt ~10px im Zeichen */
     padding: 0 !important;
   }
   body ul.wpsw-social-links li {
@@ -713,4 +713,11 @@ body.ddim-footer-inview .grecaptcha-badge {
     float: none !important;
     display: block;
   }
+}
+
+/* Mobile: Abstand unter den Icons = Abstand darueber (Section- und
+   Spalten-Margins vereinheitlicht) */
+@media (max-width: 767px) {
+  #footer .wp-social-widget { margin-bottom: 0 !important; }
+  #footer .container > .flex_column { margin-bottom: 28px !important; }
 }
