@@ -9,7 +9,7 @@
      angeschnittenen 125px-Theme-Grafik */
   background-image: url(../demo-assets/ddim-scroll-logo.png) !important;
   background-position: left center !important;
-  background-size: auto 42px !important;
+  background-size: auto 29px !important;
   min-width: 180px;
 }
 
@@ -478,7 +478,7 @@ body ul.wpsw-social-links li a:focus span.social-icon {
     height: 48px;
     display: flex;
     align-items: center;
-    background-size: auto 45px !important;
+    background-size: auto 32px !important;
     background-position: left center !important;
   }
   .responsive #top #header.header-scrolled .logo img { max-height: 40px; }
