@@ -479,7 +479,7 @@ body ul.wpsw-social-links li a:focus span.social-icon {
     display: flex;
     align-items: center;
     background-size: auto 23px !important;
-    background-position: left center !important;
+    background-position: left calc(50% - 5px) !important;
   }
   .responsive #top #header.header-scrolled .logo img { max-height: 40px; }
 }
