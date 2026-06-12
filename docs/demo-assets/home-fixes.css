@@ -1,58 +1,11 @@
-/* Startseiten-Fixes (Review-Stand 12.06.2026) - bewusst NUR in index.html eingebunden.
-   Nach Review von Suat werden übertragbare Regeln auf die Unterseiten ausgerollt.
-   Nummerierung folgt der Review-Liste. */
+/* Startseiten-Fixes (Review-Stand 12.06.2026) - NUR in index.html eingebunden.
+   Die uebertragbaren Regeln (Header, Burger/X, Footer, Demo-Leiste, Consent,
+   Back-to-top, Badge, EventON, volle Breite) liegen seit dem Rollout in
+   site-fixes.css (auf allen Seiten). Hier bleibt das Startseiten-Spezifische:
+   Magazin-Block, 6er-Kacheln, Sidebar, Video-Gate. */
 
-/* 1: Scroll-Logo freigestellt. Original-Regel lädt DDIM-340-03.png (opak, weißer
-   Kasten) per CSS-Background, noch dazu von der Live-Domain (//ddim.de). */
-.header-scrolled .logo a {
-  /* sauber freigestellter Schriftzug (offizielles Logo) statt der unten
-     angeschnittenen 125px-Theme-Grafik */
-  background-image: url(../demo-assets/ddim-scroll-logo.png) !important;
-  background-position: left center !important;
-  background-size: auto 23px !important;
-  min-width: 180px;
-}
-
-/* 2: Volle Breite. boxed-Klassen sind im HTML entfernt; hier die Restpflege:
-   grauer Seitenhintergrund weg, Inhalt bleibt zentriert. */
-html, body, #wrap_all { background-color: #ffffff; }
-
-/* 2/3 (revidiert in Runde 2): Header bleibt in der Standard-Container-Breite,
-   damit Logo und Burger bündig (flush) mit der Inhaltskante stehen. */
-
-/* 3: Schließen-X des Overlay-Menüs bleibt fix sichtbar und bekommt einen weißen
-   Teller mit feinem Rand, damit Menütext beim Scrollen nicht hindurchscheint. */
-.av-burger-overlay-active .av-burger-menu-main > a,
-.av-burger-overlay-active #advanced_menu_toggle,
-html.av-burger-overlay-active body .av-burger-menu-main > a {
-  position: fixed !important;
-  top: var(--ddim-burger-top, 16px) !important;
-  left: var(--ddim-burger-left, auto) !important;
-  right: var(--ddim-burger-right-fb, max(6vw, calc((100vw - 1310px) / 2))) !important;
-  z-index: 1000001 !important;
-  width: 46px !important;
-  height: 46px !important;
-  min-height: 0 !important;
-  max-height: 46px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff !important;
-  border: 1px solid #c9d4dd !important;
-  box-shadow: none;
-  opacity: 1 !important;
-  line-height: 1 !important;
-}
-.av-burger-overlay-active .av-burger-menu-main > a .av-hamburger {
-  position: static !important;
-  margin: 0 !important;
-  transform: none;
-}
-
-/* 4: Graue Box um das große Teaser-Bild bei "Unsere aktuellen Themen" entfernen,
-   Bild füllt die Box. */
+/* 4: Graue Box um das grosse Teaser-Bild bei "Unsere aktuellen Themen" entfernen,
+   Bild fuellt die Box. */
 .av-magazine .av-magazine-hero .av-magazine-entry-big {
   border: 0;
   padding: 0;
@@ -70,12 +23,8 @@ html.av-burger-overlay-active body .av-burger-menu-main > a {
   height: auto;
 }
 
-/* 5: EventON-Fehlertoasts unterdrücken (AJAX läuft statisch ins Leere);
-   die Bedienelemente selbst bleiben im Original-Look, Klick erklärt der Demo-JS. */
-.evo_error, .evo_notification_box, .evo_top_notification { display: none !important; }
-
 /* 6: Buttons in der rechten Spalte (DDIM.reporter, Newsletter) auf volle
-   Spaltenbreite wie die Inhalte darüber. */
+   Spaltenbreite wie die Inhalte darueber. */
 .sidebar .widget .avia-button-wrap {
   display: block;
   width: 100%;
@@ -116,230 +65,13 @@ html.av-burger-overlay-active body .av-burger-menu-main > a {
 }
 #ddim-video-gate .ddim-video-placeholder button:hover { background: #2a91d0; }
 
-/* 8: Footer: Login-/Newsletter-Buttons enger und einheitlich; Social-Icons
-   flach und modern statt weißer Kreis-Teller. */
-#footer .widget_black_studio_tinymce .textwidget > p { margin: 0 0 10px; }
-#footer .widget_black_studio_tinymce .avia-button-wrap { display: block; margin: 0 0 12px; }
-#footer .widget_black_studio_tinymce .avia-button {
-  display: block;
-  width: 100%;
-  max-width: 250px;
-  box-sizing: border-box;
-  text-align: center;
-}
-body ul.wpsw-social-links li a,
-body ul.wpsw-social-links li a span.social-icon,
-body ul.wpsw-social-links li span.social-icon:after,
-body ul.wpsw-social-links li span.social-icon:before {
-  background: transparent !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  border: 0 !important;
-}
-body ul.wpsw-social-links li a span.social-icon {
-  color: #123354 !important;
-  font-size: 30px !important;
-  width: auto !important;
-  height: auto !important;
-  line-height: 1 !important;
-}
-body ul.wpsw-social-links li a span.social-icon { transition: filter .25s ease; }
-body ul.wpsw-social-links li a:hover span.social-icon,
-body ul.wpsw-social-links li a:focus span.social-icon {
-  color: #123354 !important;
-  background: transparent !important;
-  filter: brightness(1.6);
-}
-
-/* 9 (revidiert in Runde 2): Back-to-top bündig mit der Inhalts-/Burger-Flucht,
-   reCAPTCHA-Badge daneben in gleicher Höhe statt teilüberlagert. */
-#scroll-top-link {
-  right: max(6vw, calc((100vw - 1310px) / 2)) !important;
-  bottom: 50px;
-}
-.grecaptcha-badge {
-  position: fixed !important;
-  left: auto !important;
-  right: -140px !important;
-  transform: scale(0.73);
-  transform-origin: bottom right;
-  z-index: 600 !important;
-  box-shadow: none !important;
-  border: 1px solid #d9e2ea;
-  transition: right .3s ease;
-}
-.grecaptcha-badge:hover { right: -10px !important; }
-
-/* 7: Mock-Consent-Banner (Look angelehnt an Borlabs, aufgeräumter, DDIM-Farbwelt) */
-#ddim-consent-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000002;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, .45); /* neutral abdunkeln wie das Menue-Overlay */
-}
-#ddim-consent-overlay .ddim-consent-box {
-  background: #ffffff;
-  max-width: 560px;
-  width: calc(100% - 32px);
-  max-height: calc(100vh - 48px);
-  overflow: auto;
-  padding: 30px 34px;
-  border-top: 4px solid #2a91d0;
-  font: 14px/1.6 "Open Sans", Helvetica, Arial, sans-serif;
-  color: #333333;
-}
-#ddim-consent-overlay h2 {
-  margin: 0 0 10px;
-  font-size: 20px;
-  color: #123354;
-}
-#ddim-consent-overlay p { margin: 0 0 14px; }
-.ddim-consent-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 22px;
-  margin: 0 0 18px;
-  padding: 14px 16px;
-  background: #f4f7fa;
-}
-.ddim-consent-options label {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-weight: 600;
-  color: #123354;
-  cursor: pointer;
-  white-space: nowrap;
-}
-.ddim-consent-options input { accent-color: #2a91d0; width: 16px; height: 16px; }
-.ddim-consent-actions { display: flex; flex-direction: column; gap: 9px; }
-.ddim-consent-actions button {
-  border: 0;
-  padding: 12px 18px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-}
-.ddim-consent-actions .ddim-c-all { background: #123354; color: #ffffff; }
-.ddim-consent-actions .ddim-c-all:hover { background: #2a91d0; }
-.ddim-consent-actions .ddim-c-save { background: #e8eef3; color: #123354; }
-.ddim-consent-actions .ddim-c-essential { background: transparent; color: #123354; text-decoration: underline; font-weight: 400; }
-#ddim-consent-overlay .ddim-consent-links { margin: 16px 0 0; font-size: 12.5px; }
-#ddim-consent-overlay .ddim-consent-links a { color: #2a91d0; margin-right: 14px; }
-
-/* ============ Runde 2 (Review 12.06.2026, nachmittags) ============ */
-
-/* R3-2: EventON-Filter-Buttons = Original-Grafiken (von Suat bereitgestellt) */
-.calendar_header .evo-filter-btn,
-.calendar_header .evo-sort-btn {
-  background-color: transparent !important;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  border: 0 !important;
-  width: 38px;
-  height: 31px;
-  padding: 0 !important;
-}
-.calendar_header .evo-filter-btn { background-image: url(evo-filter.png); }
-.calendar_header .evo-sort-btn { background-image: url(evo-sort.png); width: 33px; }
-.calendar_header .evo-filter-btn em,
-.calendar_header .evo-filter-btn:before,
-.calendar_header .evo-sort-btn:before { display: none !important; content: none !important; }
-
-/* R2-3b: Halbtransparentes Hinweis-Popup an den Filter-Buttons (statt statischer Box) */
-.evo_cal_above { position: relative; }
-.ddim-evo-tip {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  width: 300px;
-  z-index: 500;
-  background: rgba(18, 51, 84, .92);
-  color: #ffffff;
-  padding: 14px 16px;
-  font-size: 13px;
-  line-height: 1.55;
-}
-.ddim-evo-tip a { color: #9bd0f0; }
-
-/* R2-4: Demo-Leiste halbtransparent mit gelber Schrift, auffälliger */
-#ddim-demo-bar {
-  background: rgba(18, 51, 84, .85);
-  color: #ffd24d;
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
-}
-#ddim-demo-bar a { color: #9bd0f0; font-weight: 600; }
-#ddim-demo-bar a:hover { color: #ffd24d; }
-#ddim-demo-bar button {
-  color: #ffd24d;
-  border-color: rgba(255, 210, 77, .6);
-}
-@media (max-width: 767px) {
-  #ddim-demo-bar {
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 8px 18px;
-    padding: 12px 56px 12px 16px;
-  }
-  #ddim-demo-bar span { flex: 1 1 100%; }
-  #ddim-demo-bar a { display: block; white-space: normal; }
-  #ddim-demo-bar button {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    font-size: 20px;
-    padding: 6px 12px;
-    border-width: 2px;
-  }
-}
-
-/* R2-5: Footer-Spalten oben bündig; Breiten neu verteilt, damit die
-   Fachgruppenliste einzeilig bleibt. */
-#footer .widget { margin-top: 0; padding-top: 0; }
-#footer .widgettitle { margin: 0 0 14px; }
-#footer .textwidget > p:first-child { margin-top: 0; }
-@media (min-width: 990px) {
-  #footer .container > .flex_column.av_one_fifth { margin-left: 3%; width: 17%; }
-  #footer .container > .flex_column.av_one_fifth.first { margin-left: 0; width: 15%; }
-  #footer .container > .flex_column.av_one_fifth:nth-of-type(4) { width: 12%; }
-  #footer .container > .flex_column.av_one_fifth:nth-of-type(5) { width: 27%; }
-}
-
-/* R2-6: Footer-Buttons gleich breit UND gleich hoch */
-#footer .widget_black_studio_tinymce .avia-button {
-  min-height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* R2-7: Kacheln (Linkboxen) einheitlich + Hover-Highlight für ALLES Klickbare.
-   Suat-Invariante: Farbe/Schatten, kein Scale. */
-.flex_column.linkbox {
-  cursor: pointer;
-  transition: filter .25s ease;
-}
-.flex_column.linkbox:hover { filter: brightness(0.94); }
-.flex_column.linkbox:hover .av-special-heading-tag { color: #2a91d0; }
-
-/* R2-8: Themenliste (Magazin) - Einträge beim Hover highlighten */
-.av-magazine .av-magazine-entry { transition: background-color .2s ease; }
-.av-magazine .av-magazine-entry:hover { background-color: #f2f7fb; }
-.av-magazine .av-magazine-entry:hover .av-magazine-title,
-.av-magazine .av-magazine-entry:hover h3 a { color: #2a91d0; }
-
-/* R2-3c: Themen-Block oben bündig mit den Sidebar-Kacheln (column-top-margin
+/* R2-3c: Themen-Block oben buendig mit den Sidebar-Kacheln (column-top-margin
    der Hauptspalte neutralisieren) */
 .content .flex_column.el_after_av_one_full.el_before_av_four_fifth.column-top-margin {
   margin-top: 0 !important;
 }
 
-/* R2-3d: Großer Teaser - Bild und Text bündig zur Spaltenkante, Bild volle Breite */
+/* R2-3d: Grosser Teaser - Bild und Text buendig zur Spaltenkante, Bild volle Breite */
 .av-magazine .av-magazine-entry-big { margin: 0; }
 .av-magazine-entry-big .av-magazine-thumbnail {
   margin: 0 !important;
@@ -348,11 +80,10 @@ body ul.wpsw-social-links li a:focus span.social-icon {
 }
 .av-magazine-entry-big .av-magazine-content-wrap { padding-left: 0 !important; }
 
-/* R2-7b: Kachel-Reihen einheitlich: gleiche Mindesthöhe, gleicher Reihenabstand */
+/* R2-7b: Kachel-Reihen einheitlich: gleiche Mindesthoehe, gleicher Reihenabstand */
 .flex_column_table.sc-av_one_third { margin-top: 36px !important; }
 
-
-/* R2-3d (Nachschärfung): linke Einrückung des Teaser-Bilds vollständig entfernen */
+/* R2-3d (Nachschaerfung): linke Einrueckung des Teaser-Bilds vollstaendig entfernen */
 .av-magazine-entry-big .av-magazine-thumbnail,
 .av-magazine-entry-big .av-magazine-thumbnail-link,
 .av-magazine-entry-big .av-magazine-thumbnail img {
@@ -361,11 +92,7 @@ body ul.wpsw-social-links li a:focus span.social-icon {
   border-left: 0 !important;
 }
 
-/* R2-3c (final): Spalten-Margin sitzt tiefer im Theme - Block direkt hochziehen,
-   gemessen am Sidebar-Kachel-Oberrand (60px). */
-/* R2-3c: ersetzt durch JS-Messung (alignMagazine in home-demo.js) */
-
-/* ============ Runde 3 (Review 12.06.2026, abends) ============ */
+/* R2-3c (final): ersetzt durch JS-Messung (alignMagazine in site-demo.js) */
 
 /* R3-7: Hover-Tint endet rechts am Teaser-Bild (padding des Eintrags weg) */
 .av-magazine .av-magazine-hero .av-magazine-entry-big { padding-right: 0 !important; }
@@ -448,99 +175,6 @@ body ul.wpsw-social-links li a:focus span.social-icon {
   transform: none !important;
 }
 
-/* R3-5: Footer-Spaltenbreiten an Inhaltsbreite angepasst (gleichmäßige Lücken) */
-@media (min-width: 990px) {
-  #footer .container > .flex_column.av_one_fifth.first { width: 21%; }
-  #footer .container > .flex_column.av_one_fifth:nth-of-type(2) { width: 14%; }
-  #footer .container > .flex_column.av_one_fifth:nth-of-type(3) { width: 17%; }
-  #footer .container > .flex_column.av_one_fifth:nth-of-type(4) { width: 14%; margin-left: 1%; }
-  #footer .container > .flex_column.av_one_fifth:nth-of-type(5) {
-    width: calc(24% - 14px);
-    margin-left: calc(3% + 14px);
-  }
-}
-
-/* R3-6: Footer-Buttons in jeder Ansicht identisch; Back-to-top auch mobil */
-#footer .widget_black_studio_tinymce .avia-button {
-  width: 250px !important;
-  max-width: 100% !important;
-  min-height: 54px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-sizing: border-box !important;
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-}
-@media (max-width: 989px) {
-  #scroll-top-link.avia_pop_class {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-}
-
-/* R4-4: Mobiler Header bleibt sichtbar (fixed), etwas kompakter; Inhalt rueckt nach */
-@media (max-width: 989px) {
-  .responsive #top #header {
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 501;
-    background: transparent; /* wie Desktop: die Flaeche liefert .header_bg */
-  }
-  /* gleiche Transparenz wie Desktop (dort liefert das Theme opacity 0.95) */
-  .responsive #top #header .header_bg { opacity: 0.95; }
-  .responsive #top #header .av-logo-container {
-    height: auto !important;
-    min-height: 56px;
-    display: flex;
-    align-items: center;
-    padding-top: 6px;
-    padding-bottom: 6px;
-  }
-  .responsive #top #header .logo {
-    position: static !important;
-    display: flex;
-    align-items: center;
-  }
-  .responsive #top #header .logo a { display: flex; align-items: center; }
-  .responsive #top #header .logo img { max-height: 52px; width: auto; }
-  /* padding-top von #main setzt home-demo.js auf die gemessene Headerhoehe */
-  #scroll-top-link {
-    background: rgba(18, 51, 84, .55) !important;
-  }
-  #scroll-top-link:hover { background: rgba(18, 51, 84, .9) !important; }
-}
-
-/* R5-2: Mobiler Header schrumpft im Scroll-Zustand (header-scrolled) mit;
-   Logo bleibt vertikal mittig zum Burger */
-@media (max-width: 989px) {
-  .responsive #top #header.header-scrolled .av-logo-container {
-    min-height: 44px !important;
-    padding-top: 2px;
-    padding-bottom: 2px;
-  }
-  .responsive #top #header.header-scrolled .av-logo-container .inner-container,
-  .responsive #top #header.header-scrolled .logo,
-  .responsive #top #header.header-scrolled .main_menu {
-    height: 48px !important;
-  }
-  .responsive #top #header.header-scrolled .main_menu {
-    display: flex;
-    align-items: center;
-  }
-  .responsive #top #header.header-scrolled .logo a {
-    height: 48px;
-    display: flex;
-    align-items: center;
-    background-size: auto 25px !important;
-    background-position: left calc(50% - 5px) !important;
-  }
-  .responsive #top #header.header-scrolled .logo img { max-height: 40px; }
-}
-
 /* Sidebar-Kacheln generell als farbige Text-Boxen statt JPGs mit Bildtext
    (Bildtext skalierte mit der Breite; Schriftgroesse wie die 6er-Kacheln) */
 .responsive #top #wrap_all .sidebar .avia_partner_widget {
@@ -585,139 +219,4 @@ body ul.wpsw-social-links li a:focus span.social-icon {
 }
 @media (max-width: 989px) {
   .ddim-tile-label { font-size: 22.4px; line-height: 1.35; }
-}
-
-
-/* reCAPTCHA-Badge: unsichtbar, blendet erst im Footer-Bereich weich ein */
-.grecaptcha-badge {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transition: opacity .4s ease, right .3s ease !important;
-}
-body.ddim-footer-inview .grecaptcha-badge {
-  opacity: 1 !important;
-  pointer-events: auto !important;
-}
-
-/* Footer-Feinschliff: Titel einheitlich, Kalender-Link wie Ueberschriften,
-   Buttons mit hoeherer Spezifitaet exakt gleich breit */
-#top #footer .widgettitle {
-  font-size: 13px !important;
-  line-height: 1.5 !important;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-#top #footer #nav_menu-7 .menu a {
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-  font-size: 13px;
-}
-#top #footer .widget_black_studio_tinymce .avia-button {
-  width: 250px !important;
-  max-width: 100% !important;
-}
-
-/* Footer: Logo statt Text-Titel, Groesse wie das gescrollte Header-Logo */
-#top #footer .ddim-footer-logo img {
-  height: 23px;
-  width: auto;
-  display: block;
-}
-
-/* Footer-Buttons: gleicher Hover wie Icons/Kacheln (dunkler, keine Farbwechsel) */
-#top #footer .widget_black_studio_tinymce .avia-button { transition: filter .25s ease; }
-#top #footer .widget_black_studio_tinymce .avia-button:hover { filter: brightness(0.8); }
-
-/* Footer: leeren Bodenabstand reduzieren, damit der ganze Footer beim
-   Scrollen ans Seitenende sichtbar bleibt */
-#top #footer { padding-bottom: 0 !important; }
-#top #footer .container { padding-bottom: 18px !important; }
-
-/* Kalender-Titel darf in den Spaltenzwischenraum ragen statt abgeschnitten zu werden
-   (alle potentiellen Clipper in der Kette freigeben) */
-#footer .container > .flex_column.av_one_fifth:nth-of-type(4),
-#footer .container > .flex_column.av_one_fifth:nth-of-type(4) .widget,
-#footer .container > .flex_column.av_one_fifth:nth-of-type(4) .widget > div,
-#footer .container > .flex_column.av_one_fifth:nth-of-type(4) ul,
-#footer .container > .flex_column.av_one_fifth:nth-of-type(4) li {
-  overflow: visible !important;
-}
-#top #footer #nav_menu-7 .menu a { white-space: nowrap; }
-
-/* Footer-Buttons FINAL: der Newsletter-Button steckt in widget_text, nicht in
-   widget_black_studio_tinymce - beide Widgets jetzt identisch behandelt */
-#top #footer .widget_black_studio_tinymce .avia-button-wrap,
-#top #footer .widget_text .avia-button-wrap {
-  display: block;
-  margin: 0 0 12px;
-}
-#top #footer .widget_black_studio_tinymce .avia-button,
-#top #footer .widget_text .avia-button {
-  width: 250px !important;
-  max-width: 100% !important;
-  height: 54px !important;
-  min-height: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-sizing: border-box !important;
-  padding: 10px 14px !important;
-  white-space: normal;
-  text-align: center;
-  transition: filter .25s ease;
-}
-#top #footer .widget_black_studio_tinymce .avia-button:hover,
-#top #footer .widget_text .avia-button:hover { filter: brightness(1.18); }
-
-/* Mobile: beide Buttons gleich gross nebeneinander, kompakt an den Block oben,
-   gleicher Abstand nach unten */
-@media (max-width: 767px) {
-  #footer .container > .flex_column.av_one_fifth.first {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  #footer .container > .flex_column.av_one_fifth.first > section {
-    width: 100%;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  #footer .container > .flex_column.av_one_fifth.first > #black-studio-tinymce-15,
-  #footer .container > .flex_column.av_one_fifth.first > #text-18 {
-    width: calc(50% - 5px);
-  }
-  #top #footer .widget_black_studio_tinymce .avia-button,
-  #top #footer .widget_text .avia-button {
-    width: 100% !important;
-    height: 60px !important;
-  }
-  #top #footer .widget_black_studio_tinymce .avia-button-wrap,
-  #top #footer .widget_text .avia-button-wrap { margin: 0; }
-  #footer .container > .flex_column.av_one_fifth.first .textwidget > p { margin: 0; }
-}
-
-/* Mobile: Social Icons linksbuendig nebeneinander */
-@media (max-width: 989px) {
-  body ul.wpsw-social-links {
-    display: flex !important;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 14px;
-    margin: 0 0 0 -10px !important; /* Glyphen-Innenluft: Tinte beginnt ~10px im Zeichen */
-    padding: 0 !important;
-  }
-  body ul.wpsw-social-links li {
-    margin: 0 !important;
-    padding: 0 !important;
-    float: none !important;
-    display: block;
-  }
-}
-
-/* Mobile: Abstand unter den Icons = Abstand darueber (Section- und
-   Spalten-Margins vereinheitlicht) */
-@media (max-width: 767px) {
-  #footer .wp-social-widget { margin-bottom: 0 !important; }
-  #footer .container > .flex_column { margin-bottom: 28px !important; }
 }

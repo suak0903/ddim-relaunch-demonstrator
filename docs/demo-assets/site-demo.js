@@ -1,13 +1,26 @@
-/* Startseiten-Verhalten (Review-Stand 12.06.2026), nur in index.html eingebunden:
+/* Site-weites Verhalten (Rollout 12.06.2026), auf JEDER Seite eingebunden:
    - Mock-Consent-Banner (Borlabs-artig, aufgeräumt): Essenziell, Statistiken,
      Marketing, Externe Medien; Auswahl liegt in localStorage (ddim_demo_consent).
-   - Consent-gated YouTube-Embed (Kongressfilm) in voller Inhaltsbreite.
+   - Consent-gated YouTube-Embed (Kongressfilm, nur Startseite).
    - EventON-Filter/-Pfeile: Original-Look, Klick erklärt die statische Grenze.
-   - "Cookie-Einstellungen"-Link in der Demo-Leiste zum erneuten Öffnen. */
+   - Header-/Footer-Ausrichtungen (Burger/X, Back-to-top, Badge, Footer-Buttons).
+   - "Cookie-Einstellungen"-Link in Demo-Leiste und Socket.
+   Alle Funktionen prüfen ihre Ziel-Elemente und sind auf Seiten ohne das
+   jeweilige Element wirkungslos. */
 (function () {
   'use strict';
   var KEY = 'ddim_demo_consent';
   var VIDEO_ID = 'zSClpVtkOtU'; // Kongressfilm, im Original statisch eingebettet
+
+  // Pfad-Präfix zum Site-Root (Unterseiten liegen 1-3 Ebenen tief), abgeleitet
+  // aus dem eigenen <script src="...demo-assets/site-demo.js">
+  var ROOT = (function () {
+    var s = document.querySelector('script[src*="site-demo.js"]');
+    if (!s) return '';
+    var src = s.getAttribute('src') || '';
+    var i = src.indexOf('demo-assets/');
+    return i > 0 ? src.slice(0, i) : '';
+  })();
 
   function getConsent() {
     try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; }
@@ -61,7 +74,7 @@
       opts.appendChild(label);
     });
     var links = box.querySelector('.ddim-consent-links');
-    [['datenschutz/', 'Datenschutzerklärung'], ['impressum/', 'Impressum']].forEach(function (l) {
+    [[ROOT + 'datenschutz/', 'Datenschutzerklärung'], [ROOT + 'impressum/', 'Impressum']].forEach(function (l) {
       var a = document.createElement('a');
       a.href = l[0];
       a.textContent = l[1];
@@ -152,9 +165,12 @@
     });
   }
 
-  /* Statische Kalender-Hinweis-Box (von demo.js eingefügt) auf der Startseite
-     entfernen - der Hinweis lebt jetzt im Popup an den Buttons. */
+  /* Statische Kalender-Hinweis-Box (von demo.js eingefügt) NUR auf der
+     Startseite entfernen - dort lebt der Hinweis im Popup an den Buttons.
+     Auf der Kalender-Unterseite bleibt die Box (einzige Erklärung der leeren
+     Liste). Startseiten-Erkennung: Magazin-Block existiert nur dort. */
   function removeStaticCalendarNote() {
+    if (!document.getElementById('avia-magazine-1')) return;
     document.querySelectorAll('.ddim-demo-embed').forEach(function (el) {
       if (el.id !== 'ddim-video-gate' && /Veranstaltungskalender/.test(el.textContent)) el.remove();
     });

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Bereich nicht repliziert | DDIM-Demonstrator</title>
+<link rel="stylesheet" href="../font/fonts.css">
+<style>
+  :root { --blau: #123354; --akzent: #2a91d0; --linie: #aec2ce; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.65 "Open Sans", Helvetica, Arial, sans-serif; color: #333; }
+  header { background: var(--blau); color: #fff; padding: 48px 24px; }
+  header .inner, main { max-width: 880px; margin: 0 auto; }
+  header p.eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 13px; margin: 0 0 8px; color: #9bd0f0; }
+  h1 { font-family: Poppins, "Open Sans", sans-serif; font-size: 30px; margin: 0; }
+  main { padding: 40px 24px 80px; }
+  h2 { color: var(--blau); font-size: 21px; margin: 36px 0 8px; border-bottom: 1px solid var(--linie); padding-bottom: 6px; }
+  a { color: var(--akzent); }
+  .ziel { background: #f4f7fa; border-left: 4px solid var(--akzent); padding: 14px 18px; overflow-wrap: break-word; }
+  .ziel code { font-size: 14px; color: var(--blau); }
+  .aktionen { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px;
+         padding: 10px 22px; text-decoration: none; transition: filter .25s ease; }
+  .btn-voll { background: var(--blau); color: #fff; }
+  .btn-rand { border: 1px solid var(--blau); color: var(--blau); }
+  .btn:hover { filter: brightness(1.18); }
+  .hinweis { font-size: 14px; color: #666; margin-top: 36px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <p class="eyebrow">DDIM-Relaunch-Demonstrator</p>
+    <h1>Dieser Bereich ist nicht repliziert.</h1>
+  </div>
+</header>
+<main>
+  <p>Sie haben einen Link angeklickt, dessen Ziel <strong>bewusst nicht Teil dieser
+  statischen Arbeitskopie</strong> von ddim.de ist. Der Demonstrator zeigt die
+  Strukturseiten der Website; das verlinkte Ziel liegt außerhalb dieses Ausschnitts.</p>
+
+  <div class="ziel" id="ziel-box" hidden>
+    <strong>Verlinktes Ziel:</strong><br><code id="ziel-url"></code>
+  </div>
+
+  <h2 id="grund-titel">Warum ist diese Seite nicht im Demonstrator?</h2>
+  <p id="grund-text"></p>
+
+  <h2>Was wäre für eine Übernahme nötig?</h2>
+  <p id="weg-text"></p>
+
+  <div class="aktionen">
+    <a class="btn btn-voll" id="btn-zurueck" href="../">Zurück zum Demonstrator</a>
+    <a class="btn btn-rand" href="../">Zur Startseite des Demonstrators</a>
+    <a class="btn btn-rand" id="btn-live" href="https://ddim.de/" target="_blank" rel="noopener noreferrer">Original auf der DDIM-Live-Seite öffnen</a>
+  </div>
+
+  <p class="hinweis">Mehr zum Umfang der Arbeitskopie:
+  <a href="../hinweise-demonstrator/">Hinweise zum Demonstrator</a></p>
+</main>
+<script>
+(function () {
+  'use strict';
+  var ziel = '';
+  try { ziel = new URLSearchParams(location.search).get('ziel') || ''; } catch (e) {}
+  // Nur DDIM-Ziele zulassen (kein offener Redirect)
+  if (!/^https?:\/\/([a-z0-9-]+\.)*ddim\.de(\/|$|\?)/i.test(ziel)) ziel = '';
+
+  if (ziel) {
+    document.getElementById('ziel-box').hidden = false;
+    document.getElementById('ziel-url').textContent = ziel;
+    document.getElementById('btn-live').href = ziel;
+  }
+
+  var GRUND_DEFAULT =
+    'Das Original umfasst über 1.400 News- und Blogbeiträge aus mehr als zehn Jahren. ' +
+    'Um den Demonstrator schlank und nachvollziehbar zu halten, wurden die Strukturseiten ' +
+    'vollständig und die Artikel nur exemplarisch (vier aktuelle Beiträge) gespiegelt.';
+  var WEG_DEFAULT =
+    'Wenig. Der Erstellungsprozess ist als Skriptsatz im Repository dokumentiert; ' +
+    'damit ließe sich das komplette Archiv automatisiert in den Demonstrator übernehmen. ' +
+    'Für die Relaunch-Diskussion bringt die Masse alter Beiträge jedoch keinen Erkenntnisgewinn.';
+
+  var grund = GRUND_DEFAULT, weg = WEG_DEFAULT;
+
+  if (/mitgliederbereich\.ddim\.de/i.test(ziel)) {
+    grund = 'Der Mitgliederbereich ist eine eigenständige Web-Anwendung auf einer eigenen ' +
+      'Subdomain, mit Login und personenbezogenen Mitgliederdaten. Zugangsdaten liegen für den ' +
+      'Demonstrator bewusst nicht vor, und Mitgliederdaten gehören nicht in eine öffentliche Arbeitskopie.';
+    weg = 'Eine Replikation wäre kein statisches Spiegeln, sondern ein eigenes Projekt: ' +
+      'Authentifizierung, Datenanbindung und ein Berechtigungskonzept. In einem Relaunch würde ' +
+      'dieser Bereich als geschlossenes System angebunden, nicht als Webseite kopiert.';
+  } else if (/(managerportal|manager)\.ddim\.de/i.test(ziel)) {
+    grund = 'Das Managerportal (Mitgliederverzeichnis, Profile, Suche) ist eine eigenständige ' +
+      'Web-Anwendung auf einer eigenen Subdomain. Die Profildaten sind personenbezogene Daten der ' +
+      'Mitglieder und gehören nicht in eine öffentliche Arbeitskopie.';
+    weg = 'Eine Übernahme bräuchte eine Datenanbindung an die Mitgliederverwaltung und die ' +
+      'Einwilligung der Mitglieder. In einem Relaunch würde das Portal als eigenes System ' +
+      'weiterbetrieben oder neu angebunden.';
+  } else if (/ddim\.de\/events\//i.test(ziel)) {
+    grund = 'Veranstaltungs-Detailseiten erzeugt das Plugin EventON dynamisch aus der ' +
+      'WordPress-Datenbank. Termine veralten schnell; die Detailseiten wurden deshalb nicht ' +
+      'in den statischen Ausschnitt übernommen.';
+    weg = 'Technisch ließen sich die Detailseiten mit dem vorhandenen Skriptsatz spiegeln. ' +
+      'Sinnvoller wäre in einer finalen Lösung eine gepflegte Datenquelle (z. B. eine ' +
+      'Termin-Datei oder ein schlanker Kalenderdienst), aus der die Seiten erzeugt werden.';
+  }
+
+  document.getElementById('grund-text').textContent = grund;
+  document.getElementById('weg-text').textContent = weg;
+
+  // "Zurück": echte Browser-Historie nutzen, wenn vorhanden (sonst Startseite)
+  var back = document.getElementById('btn-zurueck');
+  if (history.length > 1 && document.referrer) {
+    back.addEventListener('click', function (e) { e.preventDefault(); history.back(); });
+  }
+})();
+</script>
+</body>
+</html>

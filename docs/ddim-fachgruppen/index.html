@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr" lang="de" prefix="og: https://ogp.me/ns#" class="html_boxed responsive av-preloader-disabled  html_header_top html_logo_left html_main_nav_header html_menu_right html_large html_header_sticky html_header_shrinking html_mobile_menu_tablet html_header_searchicon html_content_align_center html_header_unstick_top_disabled html_header_stretch_disabled html_elegant-blog html_modern-blog html_av-submenu-hidden html_av-submenu-display-click html_av-overlay-side html_av-overlay-side-classic html_av-submenu-clone html_entry_id_3815 av-cookies-no-cookie-consent av-no-preview av-default-lightbox html_text_menu_active av-mobile-menu-switch-default">
+<html dir="ltr" lang="de" prefix="og: https://ogp.me/ns#" class="responsive av-preloader-disabled  html_header_top html_logo_left html_main_nav_header html_menu_right html_large html_header_sticky html_header_shrinking html_mobile_menu_tablet html_header_searchicon html_content_align_center html_header_unstick_top_disabled html_header_stretch_disabled html_elegant-blog html_modern-blog html_av-submenu-hidden html_av-submenu-display-click html_av-overlay-side html_av-overlay-side-classic html_av-submenu-clone html_entry_id_3815 av-cookies-no-cookie-consent av-no-preview av-default-lightbox html_text_menu_active av-mobile-menu-switch-default">
 <head>
 <!--
   DDIM-Relaunch-Demonstrator (statische Arbeitskopie)
@@ -11,6 +11,69 @@
 -->
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="../demo-assets/demo.css">
+<link rel="stylesheet" href="https://use.typekit.net/cip4qtl.css">
+<link rel="stylesheet" href="../demo-assets/site-fixes.css?v=1">
+<style id="ddim-button-fix">
+/* Footer-Buttons: komplett neu, ohne Theme-Abhaengigkeit */
+#ddim-footer-buttons:before,
+#ddim-footer-buttons:after { display: none !important; content: none !important; }
+#ddim-footer-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding: 0 !important;
+}
+.ddim-fbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 250px;
+  height: 54px;
+  box-sizing: border-box;
+  background: #123354;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-size: 15px;
+  line-height: 1.3;
+  padding: 0 14px;
+  text-align: center;
+  transition: filter .25s ease;
+}
+.ddim-fbtn:hover { filter: brightness(1.18); }
+.ddim-fbtn svg { width: 16px; height: 16px; fill: currentColor; flex: 0 0 auto; }
+@media (max-width: 767px) {
+  #ddim-footer-buttons { flex-direction: row; gap: 10px; }
+  .ddim-fbtn { width: calc(50% - 5px); height: 60px; }
+}
+
+/* Cache-immune Kernregeln fuer die Footer-Buttons (Suats Review) */
+#top #footer .widget_black_studio_tinymce .avia-button,
+#top #footer .widget_text .avia-button {
+  width: 250px !important;
+  max-width: 100% !important;
+  height: 54px !important;
+  min-height: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  padding: 10px 14px !important;
+  white-space: normal;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  #top #footer .widget_black_studio_tinymce .avia-button,
+  #top #footer .widget_text .avia-button {
+    width: 100% !important;
+    height: 60px !important;
+  }
+}
+</style>
 
 <meta charset="UTF-8" />
 <!-- mobile setting -->
@@ -341,7 +404,7 @@ PLAu:26
 -->
 <style id="rocket-lazyrender-inline-css">[data-wpr-lazyrender] {content-visibility: auto;}</style></head>
 
-<body id="top" class="wp-singular page-template-default page page-id-3815 wp-theme-enfold wp-child-theme-enfold-child boxed rtl_columns av-curtain-numeric open_sans  post-type-page avia-responsive-images-support" itemscope="itemscope" itemtype="https://schema.org/WebPage" >
+<body id="top" class="wp-singular page-template-default page page-id-3815 wp-theme-enfold wp-child-theme-enfold-child rtl_columns av-curtain-numeric open_sans  post-type-page avia-responsive-images-support" itemscope="itemscope" itemtype="https://schema.org/WebPage" >
 
 	
 	<div id='wrap_all'>
@@ -426,12 +489,12 @@ PLAu:26
 <div class='avia_mega_div avia_mega2 six units'>
 
 <ul class="sub-menu">
-	<li role="menuitem" id="menu-item-31515" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children avia_mega_menu_columns_2 three units  avia_mega_menu_columns_first"><span class='mega_menu_title heading-color av-special-font'><a href='https://managerportal.ddim.de/'>DDIM Mitglieder</a></span>
+	<li role="menuitem" id="menu-item-31515" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children avia_mega_menu_columns_2 three units  avia_mega_menu_columns_first"><span class='mega_menu_title heading-color av-special-font'><a href='../nicht-repliziert/?ziel=https%3A%2F%2Fmanagerportal.ddim.de%2F'>DDIM Mitglieder</a></span>
 	<ul class="sub-menu">
-		<li role="menuitem" id="menu-item-8373" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://managerportal.ddim.de/mitgliederverzeichnis" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text">Mitgliederverzeichnis</span></a></li>
-		<li role="menuitem" id="menu-item-8375" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://managerportal.ddim.de/mitgliedersuche" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text">Mitgliedersuche</span></a></li>
-		<li role="menuitem" id="menu-item-31516" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://mitgliederbereich.ddim.de/webportal/login" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text">Mitgliederbereich</span></a></li>
-		<li role="menuitem" id="menu-item-31517" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="https://managerportal.ddim.de/login" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text">Mein Managerprofil</span></a></li>
+		<li role="menuitem" id="menu-item-8373" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="../nicht-repliziert/?ziel=https%3A%2F%2Fmanagerportal.ddim.de%2Fmitgliederverzeichnis" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text">Mitgliederverzeichnis</span></a></li>
+		<li role="menuitem" id="menu-item-8375" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="../nicht-repliziert/?ziel=https%3A%2F%2Fmanagerportal.ddim.de%2Fmitgliedersuche" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text">Mitgliedersuche</span></a></li>
+		<li role="menuitem" id="menu-item-31516" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="../nicht-repliziert/?ziel=https%3A%2F%2Fmitgliederbereich.ddim.de%2Fwebportal%2Flogin" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text">Mitgliederbereich</span></a></li>
+		<li role="menuitem" id="menu-item-31517" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="../nicht-repliziert/?ziel=https%3A%2F%2Fmanagerportal.ddim.de%2Flogin" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text">Mein Managerprofil</span></a></li>
 		<li role="menuitem" id="menu-item-31518" class="menu-item menu-item-type-custom menu-item-object-custom"><a target="_blank" href="mailto:info@ddim.de" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text">Projektanfrage versenden</span></a></li>
 	</ul>
 </li>
@@ -564,25 +627,23 @@ PLAu:26
 <img decoding="async" src="../wp-content/uploads/2026/02/DDIM-FG-Procurement-web.png"></a></div></div><footer class="entry-footer"></footer></article></div><div data-ajax-id='3525' class=' grid-entry flex_column isotope-item all_sort no_margin post-entry post-entry-3525 grid-entry-overview grid-loop-14 grid-parity-even  fachgruppe_sort  av_one_fourth  default_av_fullwidth '><article class='main_color inner-entry'  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><a href="../portfolio-item/projekt-und-programmmanagement/" title=''  data-rel='grid-1' class='grid-image avia-hover-fx'> <img decoding="async" fetchpriority="high" width="495" height="400" src="../wp-content/uploads/2016/09/DDIM-Fachgruppe-13-495x400.jpg" class="wp-image-5178 avia-img-lazy-loading-not-5178 attachment-portfolio size-portfolio wp-post-image" alt="" /></a><div class='grid-content'><div class='avia-arrow'></div><div class='grid-entry-excerpt entry-content'  itemprop="text" ><a href="../portfolio-item/projekt-und-programmmanagement/">
 <img decoding="async" src="../wp-content/uploads/2017/09/DDIM-Fachgruppe-projektmanagement.png"></a></div></div><footer class="entry-footer"></footer></article></div><div data-ajax-id='20321' class=' grid-entry flex_column isotope-item all_sort no_margin post-entry post-entry-20321 grid-entry-overview grid-loop-15 grid-parity-odd  fachgruppe_sort  av_one_fourth  default_av_fullwidth '><article class='main_color inner-entry'  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><a href="../portfolio-item/prozessmanagement/" title=''  data-rel='grid-1' class='grid-image avia-hover-fx'> <img decoding="async" fetchpriority="high" width="495" height="400" src="../wp-content/uploads/2021/04/DDIM-fachgruppe-prozessoptimierung-visual-04-495x400.jpg" class="wp-image-20353 avia-img-lazy-loading-not-20353 attachment-portfolio size-portfolio wp-post-image" alt="" /></a><div class='grid-content'><div class='avia-arrow'></div><div class='grid-entry-excerpt entry-content'  itemprop="text" ><a href="../portfolio-item/prozessmanagement/">
 <img decoding="async" src="../wp-content/uploads/2021/04/DDIM-fachgruppe-prozessoptimierung-450.png"></a></div></div><footer class="entry-footer"></footer></article></div><div data-ajax-id='4474' class=' grid-entry flex_column isotope-item all_sort no_margin post-entry post-entry-4474 grid-entry-overview grid-loop-16 grid-parity-even  fachgruppe_sort  av_one_fourth  default_av_fullwidth '><article class='main_color inner-entry'  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><a href="../portfolio-item/restrukturierung-transformation/" title=''  data-rel='grid-1' class='grid-image avia-hover-fx'> <img decoding="async" fetchpriority="high" width="495" height="400" src="../wp-content/uploads/2016/09/DDIM-Fachgruppe-10-495x400.jpg" class="wp-image-5175 avia-img-lazy-loading-not-5175 attachment-portfolio size-portfolio wp-post-image" alt="" /></a><div class='grid-content'><div class='avia-arrow'></div><div class='grid-entry-excerpt entry-content'  itemprop="text" ><a href="../portfolio-item/restrukturierung-transformation/">
-<img decoding="async" src="../wp-content/uploads/2022/06/DDIM-fachgruppe-Restrukturierung-Transformation-450.png"></a></div></div><footer class="entry-footer"></footer></article></div><div data-ajax-id='36930' class=' grid-entry flex_column isotope-item all_sort no_margin post-entry post-entry-36930 grid-entry-overview grid-loop-17 grid-parity-odd  fachgruppe_sort  av_one_fourth first default_av_fullwidth '><article class='main_color inner-entry'  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><a href="../portfolio-item/start-up-scale-up/" title=''  data-rel='grid-1' class='grid-image avia-hover-fx'> <img decoding="async" fetchpriority="high" width="495" height="400" src="../wp-content/uploads/2025/02/start-ups-scale-ups-ddim-fachgruppe-visual-495x400.jpg" class="wp-image-36933 avia-img-lazy-loading-not-36933 attachment-portfolio size-portfolio wp-post-image" alt="Fachgruppe Start-ups &amp; Scale-ups" /></a><div class='grid-content'><div class='avia-arrow'></div><div class='grid-entry-excerpt entry-content'  itemprop="text" ><a href="https://ddim.de/portfolio-item/start-ups-scale-ups/">
+<img decoding="async" src="../wp-content/uploads/2022/06/DDIM-fachgruppe-Restrukturierung-Transformation-450.png"></a></div></div><footer class="entry-footer"></footer></article></div><div data-ajax-id='36930' class=' grid-entry flex_column isotope-item all_sort no_margin post-entry post-entry-36930 grid-entry-overview grid-loop-17 grid-parity-odd  fachgruppe_sort  av_one_fourth first default_av_fullwidth '><article class='main_color inner-entry'  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><a href="../portfolio-item/start-up-scale-up/" title=''  data-rel='grid-1' class='grid-image avia-hover-fx'> <img decoding="async" fetchpriority="high" width="495" height="400" src="../wp-content/uploads/2025/02/start-ups-scale-ups-ddim-fachgruppe-visual-495x400.jpg" class="wp-image-36933 avia-img-lazy-loading-not-36933 attachment-portfolio size-portfolio wp-post-image" alt="Fachgruppe Start-ups &amp; Scale-ups" /></a><div class='grid-content'><div class='avia-arrow'></div><div class='grid-entry-excerpt entry-content'  itemprop="text" ><a href="../nicht-repliziert/?ziel=https%3A%2F%2Fddim.de%2Fportfolio-item%2Fstart-ups-scale-ups%2F">
 <img decoding="async" src="../wp-content/uploads/2025/02/DDIM-fachgruppe-startup-450.png"></a>
-</div></div><footer class="entry-footer"></footer></article></div><div data-ajax-id='4484' class=' grid-entry flex_column isotope-item all_sort no_margin post-entry post-entry-4484 grid-entry-overview grid-loop-18 grid-parity-even  post-entry-last  fachgruppe_sort  av_one_fourth  default_av_fullwidth '><article class='main_color inner-entry'  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><a href="../portfolio-item/vertrieb-marketing-service/" title=''  data-rel='grid-1' class='grid-image avia-hover-fx'> <img decoding="async" fetchpriority="high" width="495" height="400" src="../wp-content/uploads/2016/09/DDIM-Fachgruppe-23-495x400.jpg" class="wp-image-8436 avia-img-lazy-loading-not-8436 attachment-portfolio size-portfolio wp-post-image" alt="" /></a><div class='grid-content'><div class='avia-arrow'></div><div class='grid-entry-excerpt entry-content'  itemprop="text" ><a href="https://ddim.de/portfolio-item/vertrieb-und-marketing/">
+</div></div><footer class="entry-footer"></footer></article></div><div data-ajax-id='4484' class=' grid-entry flex_column isotope-item all_sort no_margin post-entry post-entry-4484 grid-entry-overview grid-loop-18 grid-parity-even  post-entry-last  fachgruppe_sort  av_one_fourth  default_av_fullwidth '><article class='main_color inner-entry'  itemscope="itemscope" itemtype="https://schema.org/CreativeWork" ><a href="../portfolio-item/vertrieb-marketing-service/" title=''  data-rel='grid-1' class='grid-image avia-hover-fx'> <img decoding="async" fetchpriority="high" width="495" height="400" src="../wp-content/uploads/2016/09/DDIM-Fachgruppe-23-495x400.jpg" class="wp-image-8436 avia-img-lazy-loading-not-8436 attachment-portfolio size-portfolio wp-post-image" alt="" /></a><div class='grid-content'><div class='avia-arrow'></div><div class='grid-entry-excerpt entry-content'  itemprop="text" ><a href="../nicht-repliziert/?ziel=https%3A%2F%2Fddim.de%2Fportfolio-item%2Fvertrieb-und-marketing%2F">
 <img decoding="async" src="../wp-content/uploads/2023/06/DDIM-Fachgruppe-vertrieb-marketing-service.png"></a></div></div><footer class="entry-footer"></footer></article></div></div></div>   <!--   class="av-portfolio-grid-sorting-container"  --></div><div id='after_portfolio'  class='main_color av_default_container_wrap container_wrap fullsize'  ><div class='container av-section-cont-open' ><div class='template-page content  av-content-full alpha units'><div class='post-entry post-entry-type-page post-entry-3815'><div class='entry-content-wrapper clearfix'>
 <div  class='hr av-2wb84n-67bbc3e36dd05282d5adf887287ff7e6 hr-invisible  avia-builder-el-5  el_after_av_portfolio  avia-builder-el-no-sibling '><span class='hr-inner '><span class="hr-inner-style"></span></span></div>
 </div></div></div><!-- close content main div --> <!-- section close by builder template -->		</div><!--end builder template--></div><!-- close default .container_wrap element -->				<div class='container_wrap footer_color' id='footer'>
 
 					<div class='container'>
 
-						<div class='flex_column av_one_fifth  first el_before_av_one_fifth'><section id="black-studio-tinymce-2" class="widget clearfix widget_black_studio_tinymce"><h3 class="widgettitle">DDIM</h3><div class="textwidget"><p>DDIM - Dachgesellschaft Deutsches Interim Management e.V.</p>
+						<div class='flex_column av_one_fifth  first el_before_av_one_fifth'><section id="black-studio-tinymce-2" class="widget clearfix widget_black_studio_tinymce"><h3 class="widgettitle ddim-footer-logo"><img src="../demo-assets/ddim-scroll-logo.png" alt="DDIM"></h3><div class="textwidget"><p>DDIM - Dachgesellschaft Deutsches Interim Management e.V.</p>
 <p>&nbsp;</p>
-</div><span class="seperator extralight-border"></span></section><section id="black-studio-tinymce-15" class="widget clearfix widget_black_studio_tinymce"><div class="textwidget"><p><div  class='avia-button-wrap av-av_button-f4c1e72a06dde5ab45cfa17716e11694-wrap avia-button-left '><a href='https://mitgliederbereich.ddim.de/webportal/login'  class='avia-button av-av_button-f4c1e72a06dde5ab45cfa17716e11694 av-link-btn avia-icon_select-yes-left-icon avia-size-medium avia-position-left avia-color-theme-color'  target="_blank"  rel="noopener noreferrer"  aria-label="Mitgliederbereich (Login)"><span class='avia_button_icon avia_button_icon_left avia-iconfont avia-font-entypo-fontello' data-av_icon='' data-av_iconfont='entypo-fontello' ></span><span class='avia_iconbox_title' >Mitgliederbereich (Login)</span></a></div></p>
-</div><span class="seperator extralight-border"></span></section><section id="text-18" class="widget clearfix widget_text">			<div class="textwidget"><div  class='avia-button-wrap av-av_button-30db5ff4e915bcf1f474394b8ecc67ca-wrap avia-button-left '><a href='../newsletter-anmeldung/'  class='avia-button av-av_button-30db5ff4e915bcf1f474394b8ecc67ca av-link-btn avia-icon_select-no avia-size-medium avia-position-left avia-color-theme-color'   aria-label="Newsletter abonnieren"><span class='avia_iconbox_title' >Newsletter abonnieren</span></a></div></div>
-		<span class="seperator extralight-border"></span></section></div><div class='flex_column av_one_fifth  el_after_av_one_fifth el_before_av_one_fifth '><section id="black-studio-tinymce-3" class="widget clearfix widget_black_studio_tinymce"><h3 class="widgettitle">Geschäftsstelle:</h3><div class="textwidget"><p>Lindenstr. 14<br />
+</div><span class="seperator extralight-border"></span></section><section id="ddim-footer-buttons"><a class="ddim-fbtn" href="../nicht-repliziert/?ziel=https%3A%2F%2Fmitgliederbereich.ddim.de%2Fwebportal%2Flogin" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1.5c-2.7 0-6 1.4-6 3.5V14h12v-1c0-2.1-3.3-3.5-6-3.5z"/></svg>Mitgliederbereich (Login)</a><a class="ddim-fbtn" href="../newsletter-anmeldung/">Newsletter abonnieren</a></section></div><div class='flex_column av_one_fifth  el_after_av_one_fifth el_before_av_one_fifth '><section id="black-studio-tinymce-3" class="widget clearfix widget_black_studio_tinymce"><h3 class="widgettitle">Geschäftsstelle</h3><div class="textwidget"><p>Lindenstr. 14<br />
 50674 Köln</p>
 <p>Tel: +49 221 92428-555<br />
 Fax: +49 221 92428-559<br />
 E-Mail: <a href="mailto:info@ddim.de">info@ddim.de<br />
-</a><a href="http://manager.ddim.de" target="_blank" rel="noopener noreferrer">ddim.de</a></p>
+</a>Webseite: <a href="../">ddim.de</a></p>
 </div><span class="seperator extralight-border"></span></section><style type='text/css'>
 			body .wpsw-social-links li a .social-icon {
 				background: #ffffff !important;
@@ -612,11 +673,11 @@ E-Mail: <a href="mailto:info@ddim.de">info@ddim.de<br />
 <li id="menu-item-7953" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7953"><a href="../interim-management/fuer-unternehmen/">für Unternehmen</a></li>
 <li id="menu-item-7954" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7954"><a href="../interim-management/faq/">FAQ</a></li>
 </ul></div><span class="seperator extralight-border"></span></section></div><div class='flex_column av_one_fifth  el_after_av_one_fifth el_before_av_one_fifth '><section id="nav_menu-5" class="widget clearfix widget_nav_menu"><div class="menu-ddim-sidemap-03-container"><ul id="menu-ddim-sidemap-03" class="menu"><li id="menu-item-7955" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7955"><a href="../interim-manager-ddim/">INTERIM MANAGER DDIM</a></li>
-<li id="menu-item-34479" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-34479"><a target="_blank" href="https://managerportal.ddim.de/">DDIM Mitglieder</a></li>
+<li id="menu-item-34479" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-34479"><a target="_blank" href="../nicht-repliziert/?ziel=https%3A%2F%2Fmanagerportal.ddim.de%2F">DDIM Mitglieder</a></li>
 <li id="menu-item-7957" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7957"><a href="../interim-manager-ddim/mitglied-werden/">Mitglied werden</a></li>
-</ul></div><span class="seperator extralight-border"></span></section><section id="nav_menu-7" class="widget clearfix widget_nav_menu"><div class="menu-ddim-sidemap-05-container"><ul id="menu-ddim-sidemap-05" class="menu"><li id="menu-item-7973" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7973"><a href="../veranstaltungskalender/">Veranstaltungskalender</a></li>
+</ul></div><span class="seperator extralight-border"></span></section><section id="nav_menu-7" class="widget clearfix widget_nav_menu"><div class="menu-ddim-sidemap-05-container"><ul id="menu-ddim-sidemap-05" class="menu"><li id="menu-item-7973" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7973"><a href="../veranstaltungskalender/">Veranstaltungen</a></li>
 </ul></div><span class="seperator extralight-border"></span></section><section id="nav_menu-8" class="widget clearfix widget_nav_menu"><div class="menu-ddim-sidemap06-container"><ul id="menu-ddim-sidemap06" class="menu"><li id="menu-item-7974" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7974"><a href="../interim-management-blog/">BLOG</a></li>
-</ul></div><span class="seperator extralight-border"></span></section></div><div class='flex_column av_one_fifth  el_after_av_one_fifth el_before_av_one_fifth '><section id="nav_menu-6" class="widget clearfix widget_nav_menu"><div class="menu-ddim-sidemap-04-container"><ul id="menu-ddim-sidemap-04" class="menu"><li id="menu-item-7960" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-3815 current_page_item menu-item-7960"><a href="../ddim-fachgruppen/" aria-current="page">FACHGRUPPEN</a></li>
+</ul></div><span class="seperator extralight-border"></span></section></div><div class='flex_column av_one_fifth  el_after_av_one_fifth el_before_av_one_fifth '><section id="nav_menu-6" class="widget clearfix widget_nav_menu"><div class="menu-ddim-sidemap-04-container"><ul id="menu-ddim-sidemap-04" class="menu"><li id="menu-item-7960" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7960"><a href="../ddim-fachgruppen/">FACHGRUPPEN</a></li>
 <li id="menu-item-7969" class="menu-item menu-item-type-post_type menu-item-object-portfolio menu-item-7969"><a href="../portfolio-item/automotive/">Automotive</a></li>
 <li id="menu-item-41000" class="menu-item menu-item-type-post_type menu-item-object-portfolio menu-item-41000"><a href="../portfolio-item/defence-aerospace/">Defence &#038; Aerospace</a></li>
 <li id="menu-item-7961" class="menu-item menu-item-type-post_type menu-item-object-portfolio menu-item-7961"><a href="../portfolio-item/industrie-4-0/">Digitalisierung &#038; Industrie 4.0</a></li>
@@ -627,7 +688,7 @@ E-Mail: <a href="mailto:info@ddim.de">info@ddim.de<br />
 <li id="menu-item-7968" class="menu-item menu-item-type-post_type menu-item-object-portfolio menu-item-7968"><a href="../portfolio-item/international/">International</a></li>
 <li id="menu-item-7962" class="menu-item menu-item-type-post_type menu-item-object-portfolio menu-item-7962"><a href="../portfolio-item/kommunikation/">Kommunikation</a></li>
 <li id="menu-item-18870" class="menu-item menu-item-type-post_type menu-item-object-portfolio menu-item-18870"><a href="../portfolio-item/life-sciences-healthcare/">Life Sciences &#038; Healthcare</a></li>
-<li id="menu-item-40801" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40801"><a href="https://ddim.de/interim-management-blog/ddim-fachgruppen-beitraege/nachhaltigkeit/">Nachhaltigkeit</a></li>
+<li id="menu-item-40801" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40801"><a href="../nicht-repliziert/?ziel=https%3A%2F%2Fddim.de%2Finterim-management-blog%2Fddim-fachgruppen-beitraege%2Fnachhaltigkeit%2F">Nachhaltigkeit</a></li>
 <li id="menu-item-36983" class="menu-item menu-item-type-post_type menu-item-object-portfolio menu-item-36983"><a href="../portfolio-item/operations/">Operations</a></li>
 <li id="menu-item-41966" class="menu-item menu-item-type-post_type menu-item-object-portfolio menu-item-41966"><a href="../portfolio-item/procurement/">Procurement</a></li>
 <li id="menu-item-8371" class="menu-item menu-item-type-post_type menu-item-object-portfolio menu-item-8371"><a href="../portfolio-item/projekt-und-programmmanagement/">Projekt- &#038; Programm-Management</a></li>
@@ -826,6 +887,7 @@ BorlabsCookieInitCheck();});
   <button type="button" aria-label="Hinweis schliessen" onclick="this.parentNode.remove()">&times;</button>
 </div>
 <script src="../demo-assets/demo.js"></script>
+<script src="../demo-assets/site-demo.js?v=1"></script>
 </body>
 </html>
 
