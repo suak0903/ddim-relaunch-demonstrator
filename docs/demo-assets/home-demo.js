@@ -386,20 +386,36 @@
     alignFooterButtons();
     alignBottomControls();
     lastMobileState = document.documentElement.clientWidth <= 989;
-    window.addEventListener('resize', function () {
-      clearThemeHeaderStyles();
+    function realignAll() {
       padForFixedHeader();
       alignMagazine();
       alignFooterButtons();
       alignBottomControls();
-      // Zweiter Tick: nach dem Breakpoint-Wechsel braucht das Theme einen
-      // Moment fuer sein Re-Layout, danach nochmal exakt messen
-      setTimeout(function () {
-        padForFixedHeader();
-        alignMagazine();
-        alignBottomControls();
-      }, 300);
+    }
+    window.addEventListener('resize', function () {
+      clearThemeHeaderStyles();
+      realignAll();
+      // Enfold baut den Header nach Breakpoint-Wechseln zeitversetzt um:
+      // Tick-Serie statt Einzeltick
+      [120, 350, 800, 1500].forEach(function (t) { setTimeout(realignAll, t); });
     });
+    // Robusteste Absicherung: jede Hoehenaenderung des Headers (egal wodurch)
+    // fuehrt das Padding sofort nach
+    if ('ResizeObserver' in window) {
+      var hdrEl = document.getElementById('header');
+      if (hdrEl) {
+        var roPending = false;
+        new ResizeObserver(function () {
+          if (roPending) return;
+          roPending = true;
+          requestAnimationFrame(function () {
+            roPending = false;
+            padForFixedHeader();
+            alignBottomControls();
+          });
+        }).observe(hdrEl);
+      }
+    }
     window.addEventListener('load', function () {
       padForFixedHeader();
       alignMagazine();
