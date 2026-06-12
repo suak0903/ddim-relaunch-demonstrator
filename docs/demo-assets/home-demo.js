@@ -181,7 +181,17 @@
     var btt = document.getElementById('scroll-top-link');
     if (!burger || !btt) return;
     var r = burger.getBoundingClientRect();
-    if (r.width === 0) return; // Burger nicht sichtbar (Desktop-Textmenü)
+    if (r.width === 0) {
+      // Burger nicht sichtbar (Desktop-Textmenü): alle dynamischen Werte
+      // zurücksetzen, sonst bleiben beim Resize Mobile-Werte hängen
+      var rt = document.documentElement;
+      rt.style.removeProperty('--ddim-burger-left');
+      rt.style.removeProperty('--ddim-burger-top');
+      ['right', 'width', 'height', 'line-height'].forEach(function (prop) {
+        btt.style.removeProperty(prop);
+      });
+      return;
+    }
     // Exakte Burger-Position als CSS-Variablen. WICHTIG: left-basiert verankern
     // und clientWidth (ohne Scrollbar) rechnen - beim Öffnen des Menüs fällt die
     // Body-Scrollbar weg, right-basierte Werte würden dann nach links glitchen.
@@ -250,6 +260,24 @@
       alignMagazine();
       alignBottomControls();
     });
+    // Beim Scrollen schrumpft der Header (header-scrolled): Burger-Position
+    // laufend nachführen, damit X und Back-to-top vertikal stimmen
+    var alignPending = false;
+    window.addEventListener('scroll', function () {
+      if (alignPending) return;
+      alignPending = true;
+      requestAnimationFrame(function () {
+        alignPending = false;
+        alignBottomControls();
+      });
+    }, { passive: true });
+    // Unmittelbar vor dem Menü-Öffnen die exakte Ist-Position übernehmen
+    document.addEventListener('mousedown', function (e) {
+      if (e.target.closest && e.target.closest('.av-burger-menu-main')) alignBottomControls();
+    }, true);
+    document.addEventListener('touchstart', function (e) {
+      if (e.target.closest && e.target.closest('.av-burger-menu-main')) alignBottomControls();
+    }, { capture: true, passive: true });
     var bar = document.getElementById('ddim-demo-bar');
     if (bar) {
       var a = document.createElement('a');

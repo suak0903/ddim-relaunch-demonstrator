@@ -7,6 +7,7 @@
 .header-scrolled .logo a {
   background-image: url(../wp-content/uploads/2016/07/DDIM-340-03-tr.png) !important;
   background-position: left center !important;
+  min-width: 132px;
 }
 
 /* 2: Volle Breite. boxed-Klassen sind im HTML entfernt; hier die Restpflege:
@@ -449,4 +450,20 @@ body ul.wpsw-social-links li a:focus span.social-icon {
     background: rgba(18, 51, 84, .55) !important;
   }
   #scroll-top-link:hover { background: rgba(18, 51, 84, .9) !important; }
+}
+
+/* R5-2: Mobiler Header schrumpft im Scroll-Zustand (header-scrolled) mit;
+   Logo bleibt vertikal mittig zum Burger */
+@media (max-width: 989px) {
+  .responsive #top #header.header-scrolled .av-logo-container {
+    min-height: 44px !important;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  .responsive #top #header.header-scrolled .logo a {
+    height: 40px;
+    display: flex;
+    align-items: center;
+  }
+  .responsive #top #header.header-scrolled .logo img { max-height: 40px; }
 }
