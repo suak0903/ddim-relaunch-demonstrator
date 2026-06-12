@@ -404,7 +404,13 @@
       if (nowMobile !== wasMobileBp) {
         wasMobileBp = nowMobile;
         clearTimeout(bpReloadTimer);
-        bpReloadTimer = setTimeout(function () { location.reload(); }, 350);
+        bpReloadTimer = setTimeout(function () {
+          // im gescrollten Zustand neu laden wuerde Enfold die kompakten
+          // Headermasse als Basis cachen -> immer oben neu starten
+          if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+          window.scrollTo(0, 0);
+          location.reload();
+        }, 350);
         return;
       }
       realignAll();
