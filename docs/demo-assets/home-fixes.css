@@ -401,11 +401,13 @@ body ul.wpsw-social-links li a:focus span.social-icon {
   margin-left: 0 !important;
 }
 @media (max-width: 767px) {
-  .flex_column_table.sc-av_one_third { grid-template-columns: 1fr; }
+  .flex_column_table.sc-av_one_third { grid-template-columns: 1fr; gap: 20px; }
   .flex_column_table.sc-av_one_third > .flex_column { min-height: 200px; }
+  /* Floats: exakt derselbe vertikale Abstand wie das Grid-gap (20px),
+     Enfolds mobiler Spalten-margin wird komplett uebersteuert */
   .entry-content-wrapper > .flex_column.av_one_third.linkbox {
     width: 100% !important;
-    margin-left: 0 !important;
+    margin: 20px 0 0 !important;
     min-height: 200px;
   }
 }
