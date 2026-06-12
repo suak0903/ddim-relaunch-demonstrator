@@ -61,7 +61,7 @@ html.av-burger-overlay-active body .av-burger-menu-main > a {
 .av-magazine-entry-big .av-magazine-thumbnail {
   background: transparent;
   border: 0;
-  padding: 0;
+  padding: 0 !important; /* Theme setzt padding-right: 7px - Luft rechts vom Bild */
   margin: 0;
 }
 .av-magazine-entry-big .av-magazine-thumbnail img {
