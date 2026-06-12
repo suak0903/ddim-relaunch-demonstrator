@@ -143,10 +143,12 @@ body ul.wpsw-social-links li a span.social-icon {
   height: auto !important;
   line-height: 1 !important;
 }
+body ul.wpsw-social-links li a span.social-icon { transition: filter .25s ease; }
 body ul.wpsw-social-links li a:hover span.social-icon,
 body ul.wpsw-social-links li a:focus span.social-icon {
-  color: #2a91d0 !important;
+  color: #123354 !important;
   background: transparent !important;
+  filter: brightness(0.75);
 }
 
 /* 9 (revidiert in Runde 2): Back-to-top bündig mit der Inhalts-/Burger-Flucht,
@@ -447,11 +449,14 @@ body ul.wpsw-social-links li a:focus span.social-icon {
 
 /* R3-5: Footer-Spaltenbreiten an Inhaltsbreite angepasst (gleichmäßige Lücken) */
 @media (min-width: 990px) {
-  #footer .container > .flex_column.av_one_fifth.first { width: 17%; }
+  #footer .container > .flex_column.av_one_fifth.first { width: 21%; }
   #footer .container > .flex_column.av_one_fifth:nth-of-type(2) { width: 14%; }
   #footer .container > .flex_column.av_one_fifth:nth-of-type(3) { width: 17%; }
-  #footer .container > .flex_column.av_one_fifth:nth-of-type(4) { width: 14%; }
-  #footer .container > .flex_column.av_one_fifth:nth-of-type(5) { width: 26%; }
+  #footer .container > .flex_column.av_one_fifth:nth-of-type(4) { width: 14%; margin-left: 1%; }
+  #footer .container > .flex_column.av_one_fifth:nth-of-type(5) {
+    width: calc(24% - 14px);
+    margin-left: calc(3% + 14px);
+  }
 }
 
 /* R3-6: Footer-Buttons in jeder Ansicht identisch; Back-to-top auch mobil */
@@ -591,4 +596,119 @@ body ul.wpsw-social-links li a:focus span.social-icon {
 body.ddim-footer-inview .grecaptcha-badge {
   opacity: 1 !important;
   pointer-events: auto !important;
+}
+
+/* Footer-Feinschliff: Titel einheitlich, Kalender-Link wie Ueberschriften,
+   Buttons mit hoeherer Spezifitaet exakt gleich breit */
+#top #footer .widgettitle {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+#top #footer #nav_menu-7 .menu a {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: 13px;
+}
+#top #footer .widget_black_studio_tinymce .avia-button {
+  width: 250px !important;
+  max-width: 100% !important;
+}
+
+/* Footer: Logo statt Text-Titel, Groesse wie das gescrollte Header-Logo */
+#top #footer .ddim-footer-logo img {
+  height: 23px;
+  width: auto;
+  display: block;
+}
+
+/* Footer-Buttons: gleicher Hover wie Icons/Kacheln (dunkler, keine Farbwechsel) */
+#top #footer .widget_black_studio_tinymce .avia-button { transition: filter .25s ease; }
+#top #footer .widget_black_studio_tinymce .avia-button:hover { filter: brightness(0.8); }
+
+/* Footer: leeren Bodenabstand reduzieren, damit der ganze Footer beim
+   Scrollen ans Seitenende sichtbar bleibt */
+#top #footer { padding-bottom: 0 !important; }
+#top #footer .container { padding-bottom: 18px !important; }
+
+/* Kalender-Titel darf in den Spaltenzwischenraum ragen statt abgeschnitten zu werden
+   (alle potentiellen Clipper in der Kette freigeben) */
+#footer .container > .flex_column.av_one_fifth:nth-of-type(4),
+#footer .container > .flex_column.av_one_fifth:nth-of-type(4) .widget,
+#footer .container > .flex_column.av_one_fifth:nth-of-type(4) .widget > div,
+#footer .container > .flex_column.av_one_fifth:nth-of-type(4) ul,
+#footer .container > .flex_column.av_one_fifth:nth-of-type(4) li {
+  overflow: visible !important;
+}
+#top #footer #nav_menu-7 .menu a { white-space: nowrap; }
+
+/* Footer-Buttons FINAL: der Newsletter-Button steckt in widget_text, nicht in
+   widget_black_studio_tinymce - beide Widgets jetzt identisch behandelt */
+#top #footer .widget_black_studio_tinymce .avia-button-wrap,
+#top #footer .widget_text .avia-button-wrap {
+  display: block;
+  margin: 0 0 12px;
+}
+#top #footer .widget_black_studio_tinymce .avia-button,
+#top #footer .widget_text .avia-button {
+  width: 250px !important;
+  max-width: 100% !important;
+  min-height: 54px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  padding: 10px 14px !important;
+  white-space: normal;
+  text-align: center;
+  transition: filter .25s ease;
+}
+#top #footer .widget_black_studio_tinymce .avia-button:hover,
+#top #footer .widget_text .avia-button:hover { filter: brightness(0.8); }
+
+/* Mobile: beide Buttons gleich gross nebeneinander, kompakt an den Block oben,
+   gleicher Abstand nach unten */
+@media (max-width: 989px) {
+  #footer .container > .flex_column.av_one_fifth.first {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  #footer .container > .flex_column.av_one_fifth.first > section {
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #footer .container > .flex_column.av_one_fifth.first > #black-studio-tinymce-15,
+  #footer .container > .flex_column.av_one_fifth.first > #text-18 {
+    width: calc(50% - 5px);
+  }
+  #top #footer .widget_black_studio_tinymce .avia-button,
+  #top #footer .widget_text .avia-button {
+    width: 100% !important;
+    min-height: 60px !important;
+  }
+  #top #footer .widget_black_studio_tinymce .avia-button-wrap,
+  #top #footer .widget_text .avia-button-wrap { margin: 0; }
+  #footer .container > .flex_column.av_one_fifth.first .textwidget > p { margin: 0; }
+}
+
+/* Mobile: Social Icons linksbuendig nebeneinander */
+@media (max-width: 989px) {
+  body ul.wpsw-social-links {
+    display: flex !important;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 26px;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  body ul.wpsw-social-links li {
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    display: block;
+  }
 }

@@ -327,6 +327,22 @@
     io.observe(footer);
   }
 
+  /* Footer-Buttons hochschieben, bis die Unterkante des unteren Buttons
+     bündig mit der Unterkante der Social-Icons ist (Desktop) */
+  function alignFooterButtons() {
+    // Achtung: der Newsletter-Button hat keinen .avia-button-wrap - daher
+    // direkt ueber die Buttons gehen und den ersten umgebenden Block schieben
+    var btns = document.querySelectorAll('#footer .widget_black_studio_tinymce .avia-button, #footer .widget_text .avia-button');
+    var social = document.querySelector('.wpsw-social-links');
+    if (btns.length < 2 || !social) return;
+    var firstWrap = btns[0].closest('.avia-button-wrap') || btns[0];
+    firstWrap.style.marginTop = '0px';
+    if (document.documentElement.clientWidth < 990) return;
+    var lastBtn = btns[btns.length - 1];
+    var diff = lastBtn.getBoundingClientRect().bottom - social.getBoundingClientRect().bottom;
+    if (Math.abs(diff) > 2) firstWrap.style.marginTop = (-Math.round(diff)) + 'px';
+  }
+
   /* Socket: Link "Cookie-Einstellungen" neben Impressum/Datenschutzerklärung */
   function addSocketConsentLink() {
     var privacyLi = document.querySelector('#socket .menu-item-privacy-policy') ||
@@ -353,12 +369,14 @@
     fastScrollTop();
     padForFixedHeader();
     alignMagazine();
+    alignFooterButtons();
     alignBottomControls();
     lastMobileState = document.documentElement.clientWidth <= 989;
     window.addEventListener('resize', function () {
       clearThemeHeaderStyles();
       padForFixedHeader();
       alignMagazine();
+      alignFooterButtons();
       alignBottomControls();
       // Zweiter Tick: nach dem Breakpoint-Wechsel braucht das Theme einen
       // Moment fuer sein Re-Layout, danach nochmal exakt messen
@@ -371,7 +389,15 @@
     window.addEventListener('load', function () {
       padForFixedHeader();
       alignMagazine();
+      alignFooterButtons();
       alignBottomControls();
+      // Spaet-Layout (Fonts/Bilder) abwarten und final nachmessen
+      setTimeout(function () {
+        padForFixedHeader();
+        alignMagazine();
+        alignFooterButtons();
+        alignBottomControls();
+      }, 450);
     });
     // Beim Scrollen schrumpft der Header (header-scrolled): Burger-Position
     // laufend nachführen, damit X und Back-to-top vertikal stimmen
