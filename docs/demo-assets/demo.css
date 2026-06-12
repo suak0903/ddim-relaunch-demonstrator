@@ -48,7 +48,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(18,51,84,.55);
+  background: rgba(0, 0, 0, .45); /* neutral abdunkeln wie das Menue-Overlay */
 }
 #ddim-demo-overlay .box {
   background: #ffffff;

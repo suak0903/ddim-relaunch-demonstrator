@@ -178,7 +178,7 @@ body ul.wpsw-social-links li a:focus span.social-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(18, 51, 84, .55);
+  background: rgba(0, 0, 0, .45); /* neutral abdunkeln wie das Menue-Overlay */
 }
 #ddim-consent-overlay .ddim-consent-box {
   background: #ffffff;
