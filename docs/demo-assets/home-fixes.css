@@ -1,0 +1,222 @@
+/* Startseiten-Fixes (Review-Stand 12.06.2026) - NUR in index.html eingebunden.
+   Die uebertragbaren Regeln (Header, Burger/X, Footer, Demo-Leiste, Consent,
+   Back-to-top, Badge, EventON, volle Breite) liegen seit dem Rollout in
+   site-fixes.css (auf allen Seiten). Hier bleibt das Startseiten-Spezifische:
+   Magazin-Block, 6er-Kacheln, Sidebar, Video-Gate. */
+
+/* 4: Graue Box um das grosse Teaser-Bild bei "Unsere aktuellen Themen" entfernen,
+   Bild fuellt die Box. */
+.av-magazine .av-magazine-hero .av-magazine-entry-big {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+.av-magazine-entry-big .av-magazine-thumbnail {
+  background: transparent;
+  border: 0;
+  padding: 0 !important; /* Theme setzt padding-right: 7px - Luft rechts vom Bild */
+  margin: 0;
+}
+.av-magazine-entry-big .av-magazine-thumbnail img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 6: Buttons in der rechten Spalte (DDIM.reporter, Newsletter) auf volle
+   Spaltenbreite wie die Inhalte darueber. */
+.sidebar .widget .avia-button-wrap {
+  display: block;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+.sidebar .widget .avia-button-wrap .avia-button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* 7: Consent-gated Video in voller Inhaltsbreite; leere 1/5-Restspalte daneben aus. */
+#top .av-7ko5i-4e6a61d1c30c74f8710332919ee9fa6b { display: none; }
+#ddim-video-gate { margin: 0; }
+#ddim-video-gate iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+#ddim-video-gate.ddim-demo-embed { padding: 0; border: 0; background: transparent; }
+#ddim-video-gate .ddim-video-placeholder {
+  border: 1px solid #aec2ce;
+  background: #f7f7f7;
+  padding: 48px 32px;
+  text-align: center;
+}
+#ddim-video-gate .ddim-video-placeholder p { margin: 0 0 14px; }
+#ddim-video-gate .ddim-video-placeholder button {
+  background: #123354;
+  color: #ffffff;
+  border: 0;
+  padding: 11px 26px;
+  font-size: 14px;
+  cursor: pointer;
+}
+#ddim-video-gate .ddim-video-placeholder button:hover { background: #2a91d0; }
+
+/* R2-3c: Themen-Block oben buendig mit den Sidebar-Kacheln (column-top-margin
+   der Hauptspalte neutralisieren) */
+.content .flex_column.el_after_av_one_full.el_before_av_four_fifth.column-top-margin {
+  margin-top: 0 !important;
+}
+
+/* R2-3d: Grosser Teaser - Bild und Text buendig zur Spaltenkante, Bild volle Breite */
+.av-magazine .av-magazine-entry-big { margin: 0; }
+.av-magazine-entry-big .av-magazine-thumbnail {
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+.av-magazine-entry-big .av-magazine-content-wrap { padding-left: 0 !important; }
+
+/* R2-7b: Kachel-Reihen einheitlich: gleiche Mindesthoehe, gleicher Reihenabstand */
+.flex_column_table.sc-av_one_third { margin-top: 36px !important; }
+
+/* R2-3d (Nachschaerfung): linke Einrueckung des Teaser-Bilds vollstaendig entfernen */
+.av-magazine-entry-big .av-magazine-thumbnail,
+.av-magazine-entry-big .av-magazine-thumbnail-link,
+.av-magazine-entry-big .av-magazine-thumbnail img {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  border-left: 0 !important;
+}
+
+/* R2-3c (final): ersetzt durch JS-Messung (alignMagazine in site-demo.js) */
+
+/* R3-7: Hover-Tint endet rechts am Teaser-Bild (padding des Eintrags weg) */
+.av-magazine .av-magazine-hero .av-magazine-entry-big { padding-right: 0 !important; }
+
+/* R3-8 (final): 6er-Kachelblock als CSS-Grid - im Original mischen sich
+   table-cell- und block-Zellen im selben Wrapper (ungleiche Breiten). */
+.flex_column_table.sc-av_one_third {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  width: 100%;
+}
+/* Enfolds 8px-Abstandshalter wuerden eigene Grid-Zellen belegen */
+.flex_column_table.sc-av_one_third > .av-flex-placeholder { display: none !important; }
+.flex_column_table.sc-av_one_third > .flex_column {
+  display: block !important;
+  width: auto !important;
+  margin: 0 !important;
+  box-sizing: border-box;
+  min-height: 280px;
+  padding: 25px !important;
+}
+/* Untere Kachelreihe: lose Floats ausserhalb des Wrappers - bekommen exakt
+   die Grid-Spaltenformel der oberen Reihe (gleiche Breite, gleiche Luecken) */
+.entry-content-wrapper > .flex_column.av_one_third.linkbox {
+  float: left;
+  width: calc((100% - 56px) / 3) !important;
+  margin-left: 28px !important;
+  margin-top: 28px !important;
+  min-height: 280px;
+  padding: 25px !important;
+  box-sizing: border-box;
+  display: block !important;
+}
+.entry-content-wrapper > .flex_column.av_one_third.linkbox.first {
+  margin-left: 0 !important;
+}
+@media (max-width: 767px) {
+  .flex_column_table.sc-av_one_third { grid-template-columns: 1fr; gap: 20px; }
+  .flex_column_table.sc-av_one_third > .flex_column { min-height: 200px; }
+  /* Floats: exakt derselbe vertikale Abstand wie das Grid-gap (20px),
+     Enfolds mobiler Spalten-margin wird komplett uebersteuert */
+  .entry-content-wrapper > .flex_column.av_one_third.linkbox {
+    width: 100% !important;
+    margin: 20px 0 0 !important;
+    min-height: 200px;
+  }
+}
+
+/* R3-4: Sidebar-Bildkacheln (Interim Manager suchen / Mitglied werden) und
+   DDIM.reporter-Bild: Hover-Highlight wie die Linkboxen; mobil volle Breite */
+.sidebar .widget_black_studio_tinymce h4 a img { transition: filter .25s ease; }
+.sidebar .widget_black_studio_tinymce h4 a:hover img { filter: brightness(0.94); }
+@media (max-width: 989px) {
+  /* Trennlinie ueber der Sidebar: solid duenn grau wie alle anderen Linien */
+  .responsive #top .sidebar {
+    border-top: 1px solid #e1e1e1 !important;
+  }
+  /* Sidebar-Huelle begrenzte das Widget auf ~80% - mobil volle Content-Breite */
+  .responsive #top .sidebar { width: 100% !important; margin-left: 0 !important; border: 0; }
+  .responsive #top .sidebar .inner_sidebar {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .responsive #top #wrap_all .sidebar .widget {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .sidebar .widget_black_studio_tinymce h4 a { display: block; width: 100%; }
+  .sidebar .widget_black_studio_tinymce h4 a img { width: 100% !important; max-width: none !important; height: auto; display: block; }
+}
+/* Hover darf NIE skalieren (gilt fuer jede Quelle einer transform-Regel) */
+.sidebar .avia_partner_widget a img,
+.sidebar .avia_partner_widget a:hover img,
+.sidebar .avia_partner_widget a:focus img {
+  transform: none !important;
+}
+
+/* Sidebar-Kacheln generell als farbige Text-Boxen statt JPGs mit Bildtext
+   (Bildtext skalierte mit der Breite; Schriftgroesse wie die 6er-Kacheln) */
+.responsive #top #wrap_all .sidebar .avia_partner_widget {
+  display: flex !important;
+  gap: 10px;
+}
+/* clearfix-Pseudoelemente wuerden als unsichtbare Flex-Items je 10px gap
+   links/rechts erzeugen (Kacheln nicht flush) */
+.responsive #top #wrap_all .sidebar .avia_partner_widget:before,
+.responsive #top #wrap_all .sidebar .avia_partner_widget:after {
+  display: none !important;
+  content: none !important;
+}
+.responsive #top #wrap_all .sidebar .avia_partner_widget {
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.responsive #top #wrap_all .sidebar .avia_partner_widget a {
+  flex: 1 1 calc(50% - 5px);
+  width: calc(50% - 5px) !important;
+  max-width: none !important;
+  margin: 0 !important;
+  float: none !important;
+  background: #123354;
+  aspect-ratio: 1 / 1;
+  display: flex !important;
+  align-items: flex-start;
+  padding: 16px 18px !important;
+  box-sizing: border-box;
+  transition: filter .25s ease;
+}
+.responsive #top #wrap_all .sidebar .avia_partner_widget a:hover { filter: brightness(1.18); }
+.sidebar .avia_partner_widget a img { display: none !important; }
+.ddim-tile-label {
+  display: block;
+  color: #ffffff;
+  font-size: 17px;
+  line-height: 1.45;
+}
+@media (max-width: 989px) {
+  .ddim-tile-label { font-size: 22.4px; line-height: 1.35; }
+}

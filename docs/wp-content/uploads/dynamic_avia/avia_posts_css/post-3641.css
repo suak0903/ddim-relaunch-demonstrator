@@ -1,0 +1,75 @@
+#top .av-special-heading.av-2lek6x-5ad7965410b3679b4b75de778a546176{
+padding-bottom:10px;
+font-size:28px;
+}
+body .av-special-heading.av-2lek6x-5ad7965410b3679b4b75de778a546176 .av-special-heading-tag .heading-char{
+font-size:25px;
+}
+#top #wrap_all .av-special-heading.av-2lek6x-5ad7965410b3679b4b75de778a546176 .av-special-heading-tag{
+font-size:28px;
+}
+.av-special-heading.av-2lek6x-5ad7965410b3679b4b75de778a546176 .av-subheading{
+font-size:15px;
+}
+
+#top .hr.hr-invisible.av-mechyh-43150d3715bd5231aed3a65254be5d84{
+height:35px;
+}
+
+#top .flex_column_table.av-equal-height-column-flextable.av-k84s7t-dd0f49b7f38c5ea6aa2f9099de50ee17{
+margin-top:0px;
+margin-bottom:600px;
+}
+.flex_column.av-k84s7t-dd0f49b7f38c5ea6aa2f9099de50ee17{
+border-radius:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+}
+
+#top .flex_column_table.av-equal-height-column-flextable.av-5c95rd-0412183dcfbc6ed51c5e539c87abb6d3{
+margin-top:0px;
+margin-bottom:600px;
+}
+.flex_column.av-5c95rd-0412183dcfbc6ed51c5e539c87abb6d3{
+border-radius:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+}
+
+#top .flex_column_table.av-equal-height-column-flextable.av-fck9mx-cf8cdfd30da01e0da20a6a4828ddcaac{
+margin-top:0px;
+margin-bottom:600px;
+}
+.flex_column.av-fck9mx-cf8cdfd30da01e0da20a6a4828ddcaac{
+border-radius:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+}
+
+#top .flex_column_table.av-equal-height-column-flextable.av-aka2bd-d582ee729778d672a69cbe940385866b{
+margin-top:0px;
+margin-bottom:600px;
+}
+.flex_column.av-aka2bd-d582ee729778d672a69cbe940385866b{
+border-radius:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+}
+
+#top .flex_column_table.av-equal-height-column-flextable.av-5c95rd-2-15eb61663e7afa6765eaf787c64f9979{
+margin-top:0px;
+margin-bottom:600px;
+}
+.flex_column.av-5c95rd-2-15eb61663e7afa6765eaf787c64f9979{
+border-radius:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+}
+
+
+@media only screen and (min-width: 480px) and (max-width: 767px){ 
+#top #wrap_all .av-special-heading.av-2lek6x-5ad7965410b3679b4b75de778a546176 .av-special-heading-tag{
+font-size:0.8em;
+}
+}
+
+@media only screen and (max-width: 479px){ 
+#top #wrap_all .av-special-heading.av-2lek6x-5ad7965410b3679b4b75de778a546176 .av-special-heading-tag{
+font-size:0.8em;
+}
+}

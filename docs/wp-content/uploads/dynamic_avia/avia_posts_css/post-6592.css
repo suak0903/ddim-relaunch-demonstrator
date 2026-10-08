@@ -1,0 +1,86 @@
+.avia-section.av-ldzu1c-78bdcf2df67aeaf885bdc9266605deae{
+background-color:#f2f2f2;
+background-image:unset;
+}
+
+#top .av-special-heading.av-3t41zk-03dd92a0c5fa96043627a2f3325ee6c1{
+padding-bottom:10px;
+font-size:28px;
+}
+body .av-special-heading.av-3t41zk-03dd92a0c5fa96043627a2f3325ee6c1 .av-special-heading-tag .heading-char{
+font-size:25px;
+}
+#top #wrap_all .av-special-heading.av-3t41zk-03dd92a0c5fa96043627a2f3325ee6c1 .av-special-heading-tag{
+font-size:28px;
+}
+.av-special-heading.av-3t41zk-03dd92a0c5fa96043627a2f3325ee6c1 .av-subheading{
+font-size:15px;
+}
+
+#top .hr.hr-invisible.av-1sze1s-477e2e9182d1420aec288b3b388eaa1f{
+height:35px;
+}
+
+.flex_column.av-5pibyo-7ea65f0eba303c4e881363dfa6933bf1{
+border-radius:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+}
+
+.flex_column.av-cfk3y8-8a189f0d6593d2e9620ea7f68b171b02{
+border-radius:0px 0px 0px 0px;
+padding:30px 30px 15px 15px;
+background-color:#10355e;
+}
+
+#top .av-special-heading.av-2uxzkw-7180a1ca479da335cbe398926372ac21{
+padding-bottom:0;
+color:#ffffff;
+font-size:28px;
+}
+body .av-special-heading.av-2uxzkw-7180a1ca479da335cbe398926372ac21 .av-special-heading-tag .heading-char{
+font-size:25px;
+}
+#top #wrap_all .av-special-heading.av-2uxzkw-7180a1ca479da335cbe398926372ac21 .av-special-heading-tag{
+font-size:28px;
+}
+.av-special-heading.av-2uxzkw-7180a1ca479da335cbe398926372ac21 .special-heading-inner-border{
+border-color:#ffffff;
+}
+.av-special-heading.av-2uxzkw-7180a1ca479da335cbe398926372ac21 .av-subheading{
+font-size:15px;
+}
+
+#top .hr.hr-invisible.av-7fh4ls-1ec48dbc71688b94eb8eb4d6f529d233{
+height:10px;
+}
+
+.flex_column.av-5pibyo-3-fc4d727bf565e4eb6acd4d2e8cc489d8{
+border-radius:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+}
+
+.flex_column.av-cfk3y8-2-7a5aa9380f88a3b7ac3c411924002bc6{
+border-radius:0px 0px 0px 0px;
+background-color:rgba(255,255,255,0.01);
+}
+
+
+@media only screen and (min-width: 480px) and (max-width: 767px){ 
+#top #wrap_all .av-special-heading.av-3t41zk-03dd92a0c5fa96043627a2f3325ee6c1 .av-special-heading-tag{
+font-size:0.8em;
+}
+
+#top #wrap_all .av-special-heading.av-2uxzkw-7180a1ca479da335cbe398926372ac21 .av-special-heading-tag{
+font-size:0.8em;
+}
+}
+
+@media only screen and (max-width: 479px){ 
+#top #wrap_all .av-special-heading.av-3t41zk-03dd92a0c5fa96043627a2f3325ee6c1 .av-special-heading-tag{
+font-size:0.8em;
+}
+
+#top #wrap_all .av-special-heading.av-2uxzkw-7180a1ca479da335cbe398926372ac21 .av-special-heading-tag{
+font-size:0.8em;
+}
+}
